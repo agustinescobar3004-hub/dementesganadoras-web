@@ -155,13 +155,27 @@
     font-weight:800;
     line-height:1.04;
     letter-spacing:-0.03em;
-    margin-bottom:24px;
+    margin-bottom:18px;
   }
   h1.hero-title .grad{
     background:linear-gradient(120deg, var(--accent) 10%, var(--green) 90%);
     -webkit-background-clip:text;
     background-clip:text;
     color:transparent;
+  }
+  .hero-chip{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding:8px 18px;
+    border-radius:999px;
+    background:var(--green);
+    color:#fff;
+    font-size:13px;
+    font-weight:800;
+    letter-spacing:-0.01em;
+    margin-bottom:22px;
+    box-shadow:0 10px 28px rgb(0 201 122 / 0.4);
   }
   .hero-sub{
     font-size:clamp(1.02rem, 2vw, 1.25rem);
@@ -415,8 +429,12 @@
     <div class="hero-inner">
       <div class="eyebrow reveal in-view"><span class="dot"></span> Impulsado por De Mentes Ganadoras</div>
       <h1 class="hero-title reveal in-view">Organizá tu negocio.<br><span class="grad">Escalá tu vida.</span></h1>
-      <p class="hero-sub reveal in-view reveal-delay-1">EscalApp es el sistema de gestión con IA para emprendedores que quieren crecer en serio.</p>
-      <a href="producto.html" class="btn btn-primary reveal in-view reveal-delay-2">Quiero empezar</a>
+      <div class="hero-chip reveal in-view reveal-delay-1">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+        EscalApp
+      </div>
+      <p class="hero-sub reveal in-view reveal-delay-2">El sistema de gestión con IA para emprendedores que quieren crecer en serio.</p>
+      <a href="producto.html" class="btn btn-primary reveal in-view reveal-delay-3">Quiero empezar</a>
     </div>
     <a href="#problema" class="hero-scroll-arrow" id="scroll-arrow" aria-label="Ver más abajo">
       <span class="arrow-icon">

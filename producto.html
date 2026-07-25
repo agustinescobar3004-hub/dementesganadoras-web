@@ -164,76 +164,97 @@
   .phone-screen{
     position:relative;
     width:100%;height:100%;
-    background:var(--bg);
+    background-color:#08090d;
+    background-image:radial-gradient(rgb(255 255 255 / 0.08) 1px, transparent 1px);
+    background-size:14px 14px;
     border-radius:34px;
     overflow:hidden;
     padding:34px 15px 18px;
     display:flex;
     flex-direction:column;
-    gap:12px;
+    gap:10px;
     box-shadow:0 0 0 1px rgb(255 255 255 / 0.05) inset;
   }
   .mock-header{display:flex;align-items:center;gap:7px;margin-bottom:2px;}
-  .mock-logo{
-    width:20px;height:20px;border-radius:6px;
-    background:linear-gradient(135deg, var(--accent), var(--green));
-    display:flex;align-items:center;justify-content:center;
-    font-size:9px;font-weight:900;color:#06070b;
-    flex-shrink:0;
-  }
   .mock-title{font-size:13px;font-weight:800;color:var(--text);letter-spacing:-0.01em;}
-  .mock-ai-status{
-    margin-left:auto;
-    display:flex;align-items:center;gap:5px;
-    font-size:7.5px;font-weight:700;
-    text-transform:uppercase;letter-spacing:0.05em;
-    color:var(--green);
-  }
   .mock-ai-dot{
-    width:6px;height:6px;border-radius:50%;
+    margin-left:auto;
+    width:7px;height:7px;border-radius:50%;
     background:var(--green);
-    box-shadow:0 0 6px var(--green);
+    box-shadow:0 0 8px var(--green);
     animation:mock-pulse 1.6s ease-in-out infinite;
   }
   @keyframes mock-pulse{0%,100%{opacity:1;}50%{opacity:0.35;}}
 
-  .mock-chat{
-    flex:1;
-    display:flex;
-    flex-direction:column;
-    gap:7px;
-    overflow:hidden;
-  }
-  .mock-bubble{
-    max-width:88%;
-    padding:8px 11px;
+  .mock-processing{
     border-radius:13px;
-    font-size:9.5px;
-    line-height:1.45;
-    font-weight:600;
-  }
-  .mock-bubble-user{
-    align-self:flex-end;
-    background:rgb(255 255 255 / 0.08);
-    color:var(--text);
-    border-bottom-right-radius:4px;
-  }
-  .mock-bubble-ai{
-    align-self:flex-start;
-    background:linear-gradient(135deg, rgb(0 229 255 / 0.18), rgb(0 229 255 / 0.06));
     border:1px solid rgb(0 229 255 / 0.25);
+    background:linear-gradient(135deg, rgb(0 229 255 / 0.14), rgb(0 229 255 / 0.04));
+    padding:10px 12px;
     color:#fff;
-    border-bottom-left-radius:4px;
+    font-size:9.5px;
+    font-weight:600;
+    line-height:1.4;
   }
-  .mock-bubble-ai strong{display:block;color:var(--accent);font-size:9.5px;margin-bottom:2px;}
+  .mock-cursor{
+    display:inline-block;
+    margin-left:2px;
+    color:var(--accent);
+    font-weight:800;
+    animation:cursor-blink 1s steps(1) infinite;
+  }
+  @keyframes cursor-blink{0%,50%{opacity:1;}50.01%,100%{opacity:0;}}
+  .mock-progress-track{
+    position:relative;
+    width:100%;height:4px;
+    border-radius:2px;
+    background:rgb(255 255 255 / 0.1);
+    overflow:hidden;
+    margin-top:8px;
+  }
+  .mock-progress-bar{
+    position:absolute;top:0;left:-40%;height:100%;width:40%;
+    border-radius:2px;
+    background:linear-gradient(90deg, var(--accent), var(--green));
+    box-shadow:0 0 8px rgb(0 229 255 / 0.6);
+  }
+  .in-view .mock-progress-bar{animation:progress-slide 1.6s ease-in-out infinite;}
+  @keyframes progress-slide{
+    0%{left:-40%;}
+    100%{left:100%;}
+  }
+
+  .mock-results{display:flex;flex-direction:column;gap:6px;flex:1;overflow:hidden;}
+  .mock-result-card{
+    display:flex;align-items:center;gap:6px;
+    padding:7px 10px;
+    border-radius:10px;
+    border:1px solid rgb(0 201 122 / 0.28);
+    background:rgb(0 201 122 / 0.1);
+    color:var(--text);
+    font-size:9px;
+    font-weight:700;
+    opacity:0;
+    transform:translateY(6px);
+  }
+  .mock-result-card .mr-check{font-size:10px;flex-shrink:0;}
+  .in-view .mock-result-card{animation:card-appear .5s cubic-bezier(.22,1,.36,1) forwards;}
+  .in-view .mock-result-card:nth-child(1){animation-delay:.5s;}
+  .in-view .mock-result-card:nth-child(2){animation-delay:1s;}
+  .in-view .mock-result-card:nth-child(3){animation-delay:1.5s;}
+  .in-view .mock-result-card:nth-child(4){animation-delay:2s;}
+  @keyframes card-appear{
+    from{opacity:0;transform:translateY(6px);}
+    to{opacity:1;transform:translateY(0);}
+  }
 
   .mock-input-bar{
     display:flex;
     align-items:center;
     gap:8px;
     border-radius:999px;
-    border:1px solid var(--border);
-    background:rgb(255 255 255 / 0.03);
+    border:1px solid rgb(255 255 255 / 0.1);
+    background:rgb(0 0 0 / 0.35);
     padding:9px 8px 9px 13px;
     margin-top:auto;
   }
@@ -471,21 +492,18 @@
           <div class="phone-notch"></div>
           <div class="phone-screen">
             <div class="mock-header">
-              <span class="mock-logo">DM</span>
-              <span class="mock-title">EscalApp</span>
-              <span class="mock-ai-status"><span class="mock-ai-dot"></span>IA activa</span>
+              <span class="mock-title">⚡ EscalApp IA</span>
+              <span class="mock-ai-dot"></span>
             </div>
-            <div class="mock-chat">
-              <div class="mock-bubble mock-bubble-user">vendí 3 iphones a santiago a $300</div>
-              <div class="mock-bubble mock-bubble-ai">
-                <strong>✓ Venta registrada</strong>
-                Santiago — 3 iPhone — $900 total<br>Ganancia estimada: $210
-              </div>
-              <div class="mock-bubble mock-bubble-user">y lucas me debe $200</div>
-              <div class="mock-bubble mock-bubble-ai">
-                <strong>✓ Deudor agregado</strong>
-                Lucas — $200 pendiente
-              </div>
+            <div class="mock-processing">
+              Procesando 4 movimientos del día<span class="mock-cursor">|</span>
+              <div class="mock-progress-track"><div class="mock-progress-bar"></div></div>
+            </div>
+            <div class="mock-results">
+              <div class="mock-result-card"><span class="mr-check">✅</span>Venta registrada — $900</div>
+              <div class="mock-result-card"><span class="mr-check">✅</span>Stock actualizado — 47 unidades</div>
+              <div class="mock-result-card"><span class="mr-check">✅</span>Deudor agregado — Lucas $200</div>
+              <div class="mock-result-card"><span class="mr-check">✅</span>Ganancia del día — $210</div>
             </div>
             <div class="mock-input-bar">
               <span class="mock-input-placeholder">Contale al asistente...</span>
