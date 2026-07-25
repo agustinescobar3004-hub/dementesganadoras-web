@@ -131,6 +131,106 @@
     font-weight:500;
   }
 
+  /* ── Mockup de EscalApp ─────────────────────────────────── */
+  #mockup-showcase{padding:20px 24px 100px;}
+  .phone-mockup-wrap{
+    position:relative;
+    max-width:340px;
+    margin:0 auto;
+    padding:64px 44px;
+  }
+  .phone-frame{
+    position:relative;
+    z-index:2;
+    width:100%;
+    aspect-ratio:9/19.3;
+    background:linear-gradient(165deg, #23283b, #090b12);
+    border-radius:46px;
+    padding:14px;
+    box-shadow:
+      0 0 0 2px rgb(255 255 255 / 0.07),
+      0 50px 90px -30px rgb(0 229 255 / 0.3),
+      0 25px 60px rgba(0,0,0,0.6);
+  }
+  .phone-notch{
+    position:absolute;
+    top:14px;left:50%;
+    transform:translateX(-50%);
+    width:84px;height:20px;
+    background:#090b12;
+    border-radius:0 0 14px 14px;
+    z-index:3;
+  }
+  .phone-screen{
+    position:relative;
+    width:100%;height:100%;
+    background:var(--bg);
+    border-radius:34px;
+    overflow:hidden;
+    padding:34px 15px 18px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    box-shadow:0 0 0 1px rgb(255 255 255 / 0.05) inset;
+  }
+  .mock-header{display:flex;align-items:center;gap:7px;margin-bottom:2px;}
+  .mock-logo{
+    width:20px;height:20px;border-radius:6px;
+    background:linear-gradient(135deg, var(--accent), var(--green));
+    display:flex;align-items:center;justify-content:center;
+    font-size:9px;font-weight:900;color:#06070b;
+    flex-shrink:0;
+  }
+  .mock-title{font-size:13px;font-weight:800;color:var(--text);letter-spacing:-0.01em;}
+  .mock-hero-card{
+    border-radius:16px;
+    border:1px solid rgb(0 229 255 / 0.2);
+    background:radial-gradient(circle at 0% 0%, rgb(0 229 255 / 0.12), transparent 65%), rgb(255 255 255 / 0.02);
+    padding:15px 16px;
+    display:flex;flex-direction:column;gap:5px;
+  }
+  .mock-hero-card .mock-label{font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);}
+  .mock-hero-card .mock-value{font-size:21px;font-weight:800;color:var(--accent);letter-spacing:-0.02em;text-shadow:0 0 18px rgb(0 229 255 / 0.45);}
+  .mock-kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .mock-kpi{
+    border-radius:12px;
+    border:1px solid var(--border);
+    border-top:2px solid var(--kpi-accent, var(--accent));
+    background:rgb(255 255 255 / 0.02);
+    padding:9px 11px;
+    display:flex;flex-direction:column;gap:3px;
+  }
+  .mock-kpi .mock-kpi-label{font-size:7.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);}
+  .mock-kpi .mock-kpi-value{font-size:12.5px;font-weight:800;color:var(--text);}
+
+  .float-icon{
+    position:absolute;
+    z-index:1;
+    width:56px;height:56px;
+    border-radius:16px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:26px;
+    background:rgb(255 255 255 / 0.04);
+    border:1px solid var(--border);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    box-shadow:0 14px 30px -10px rgba(0,0,0,0.55);
+    animation:float-bob 5s ease-in-out infinite;
+  }
+  .fi-1{top:2%;left:0;animation-delay:0s;}
+  .fi-2{top:16%;right:0;animation-delay:.8s;}
+  .fi-3{bottom:30%;left:-4%;animation-delay:1.6s;}
+  .fi-4{bottom:10%;right:-2%;animation-delay:2.4s;}
+  .fi-5{top:46%;left:-8%;animation-delay:3.2s;}
+  @keyframes float-bob{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-14px);}
+  }
+  @media (max-width:640px){
+    .phone-mockup-wrap{padding:48px 24px;max-width:280px;}
+    .float-icon{width:44px;height:44px;font-size:20px;border-radius:13px;}
+  }
+
   /* ── Features (grid completo) ──────────────────────────── */
   #caracteristicas .head{text-align:center;max-width:620px;margin:0 auto 56px;}
   #caracteristicas h2{font-size:clamp(1.8rem,3.6vw,2.4rem);font-weight:800;letter-spacing:-0.02em;margin-bottom:14px;}
@@ -234,6 +334,50 @@
   <section id="producto-hero">
     <h1 class="reveal in-view">EscalApp — <span class="grad">Todo lo que tu negocio necesita</span></h1>
     <p class="reveal in-view reveal-delay-1">El sistema de gestión con inteligencia artificial para emprendedores que quieren crecer en serio.</p>
+  </section>
+
+  <section id="mockup-showcase">
+    <div class="wrap">
+      <div class="phone-mockup-wrap reveal">
+        <span class="float-icon fi-1" aria-hidden="true">🤖</span>
+        <span class="float-icon fi-2" aria-hidden="true">📝</span>
+        <span class="float-icon fi-3" aria-hidden="true">📦</span>
+        <span class="float-icon fi-4" aria-hidden="true">💰</span>
+        <span class="float-icon fi-5" aria-hidden="true">📊</span>
+
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="mock-header">
+              <span class="mock-logo">DM</span>
+              <span class="mock-title">EscalApp</span>
+            </div>
+            <div class="mock-hero-card">
+              <span class="mock-label">Patrimonio Neto</span>
+              <span class="mock-value">$9.185,20</span>
+            </div>
+            <div class="mock-kpi-grid">
+              <div class="mock-kpi" style="--kpi-accent:var(--green)">
+                <span class="mock-kpi-label">Ventas</span>
+                <span class="mock-kpi-value">$17.167</span>
+              </div>
+              <div class="mock-kpi" style="--kpi-accent:var(--green)">
+                <span class="mock-kpi-label">Ganancia</span>
+                <span class="mock-kpi-value">$1.534</span>
+              </div>
+              <div class="mock-kpi" style="--kpi-accent:var(--accent)">
+                <span class="mock-kpi-label">Stock</span>
+                <span class="mock-kpi-value">$13.040</span>
+              </div>
+              <div class="mock-kpi" style="--kpi-accent:var(--accent)">
+                <span class="mock-kpi-label">Caja</span>
+                <span class="mock-kpi-value">$2.002</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section id="caracteristicas" class="section-pad">
