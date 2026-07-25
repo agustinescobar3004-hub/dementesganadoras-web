@@ -339,36 +339,71 @@
   }
   @media (max-width:720px){.features{grid-template-columns:1fr;}}
   .feature-card{
-    padding:38px 30px;
-    border-radius:20px;
+    padding:44px 34px;
+    border-radius:22px;
     border:1px solid var(--border);
     background:rgb(255 255 255 / 0.02);
     transition:transform .3s cubic-bezier(.22,1,.36,1), border-color .3s ease;
   }
   .feature-card:hover{transform:translateY(-6px);border-color:rgb(0 201 122 / 0.3);}
   .feature-icon{
-    width:52px;height:52px;
-    border-radius:14px;
+    width:56px;height:56px;
+    border-radius:15px;
     display:flex;align-items:center;justify-content:center;
-    font-size:24px;
+    font-size:26px;
     background:linear-gradient(135deg, rgb(0 229 255 / 0.14), rgb(0 201 122 / 0.14));
-    margin-bottom:20px;
+    margin-bottom:22px;
   }
-  .feature-card h3{display:flex;align-items:center;gap:8px;font-size:1.08rem;font-weight:700;margin-bottom:10px;letter-spacing:-0.01em;}
-  .feature-card p{color:var(--muted);font-size:0.95rem;line-height:1.55;font-weight:500;}
+  .feature-card h3{display:flex;align-items:center;flex-wrap:wrap;gap:10px;font-size:1.4rem;font-weight:800;margin-bottom:12px;letter-spacing:-0.015em;}
+  .feature-card p{color:var(--muted);font-size:1.05rem;line-height:1.6;font-weight:500;}
   #producto .cta-wrap{text-align:center;}
   .ia-badge{
     display:inline-flex;
     align-items:center;
-    gap:4px;
-    padding:3px 10px;
+    gap:5px;
+    padding:5px 14px;
     border-radius:999px;
-    background:rgb(0 229 255 / 0.14);
-    border:1px solid rgb(0 229 255 / 0.45);
+    background:rgb(0 229 255 / 0.18);
+    border:1.5px solid rgb(0 229 255 / 0.6);
+    box-shadow:0 0 16px rgb(0 229 255 / 0.35);
     color:var(--accent);
-    font-size:11px;
+    font-size:13px;
     font-weight:800;
     letter-spacing:0.02em;
+  }
+
+  /* ── Card especial "App para celular" ──────────────────── */
+  .feature-icon-app{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:18px;}
+  .app-name-label{color:#fff;font-weight:800;font-size:18px;letter-spacing:-0.01em;}
+  .mini-phone{
+    width:68px;height:138px;
+    border-radius:17px;
+    background:linear-gradient(165deg, #23283b, #090b12);
+    padding:6px;
+    margin:20px auto 0;
+    box-shadow:0 16px 34px -12px rgb(0 229 255 / 0.35);
+  }
+  .mini-phone-screen{
+    width:100%;height:100%;
+    border-radius:12px;
+    background:var(--bg);
+    padding:12px 9px;
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+    align-items:center;
+    justify-content:center;
+  }
+  .mini-phone-bar{
+    width:80%;height:5px;
+    border-radius:3px;
+    background:linear-gradient(90deg, var(--accent), var(--green));
+    opacity:0.85;
+  }
+  .mini-phone-dot{
+    width:18px;height:18px;border-radius:50%;
+    background:rgb(0 229 255 / 0.2);
+    border:1.5px solid var(--accent);
   }
 
   /* ── Formulario ──────────────────────────────────────── */
@@ -456,7 +491,7 @@
     <div id="hero-bg-gradient"></div>
     <div id="particles"></div>
     <div class="hero-inner">
-      <div class="eyebrow reveal in-view"><span class="dot"></span> impulsado por dementesganadoras</div>
+      <div class="eyebrow reveal in-view"><span class="dot"></span> impulsado por deMentesGanadoras</div>
       <h1 class="hero-title reveal in-view">Organizá tu negocio.<br><span class="grad">Escalá tu vida.</span></h1>
       <a href="producto.html" class="hero-chip reveal in-view reveal-delay-1">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
@@ -507,24 +542,34 @@
       </div>
       <div class="features">
         <div class="feature-card reveal">
-          <div class="feature-icon"><img src="icon-192x192.png" alt="EscalApp" style="width:30px;height:30px;border-radius:8px;object-fit:cover;" /></div>
-          <h3>App para celular</h3>
-          <p>Sin computadora, sin excusas. Instalala en tu iPhone o Android en segundos y llevá tu negocio en el bolsillo.</p>
+          <div class="feature-icon">📝</div>
+          <h3>Notas rápidas <span class="ia-badge">⚡ IA</span></h3>
+          <p>Anotá lo que pasa en el día y al final se lo mandás a tu asistente de una sola vez.</p>
         </div>
         <div class="feature-card reveal reveal-delay-1">
-          <div class="feature-icon">📝</div>
-          <h3>Notas rápidas con IA <span class="ia-badge">⚡ IA</span></h3>
-          <p>Durante el día anotás rápido lo que pasó. Al final, tu asistente lo procesa todo junto. Sin interrumpir tu jornada.</p>
-        </div>
-        <div class="feature-card reveal reveal-delay-2">
           <div class="feature-icon">🤖</div>
           <h3>Asistente IA <span class="ia-badge">⚡ IA</span></h3>
-          <p>Le mandás un mensaje con todo lo del día y él registra cada movimiento solo. Ventas, compras, deudores — todo en segundos.</p>
+          <p>Le escribís todo lo que pasó y él registra cada movimiento solo, sin formularios.</p>
         </div>
-        <div class="feature-card reveal reveal-delay-3">
+        <div class="feature-card reveal reveal-delay-2">
           <div class="feature-icon">📊</div>
           <h3>Dashboard en tiempo real</h3>
-          <p>Sabés exactamente cuánto ganás, cuánto vale tu stock y cómo va tu negocio. Sin calculadora, sin adivinar.</p>
+          <p>Sabés cuánto ganás y cuánto vale tu stock, sin calculadora ni adivinar.</p>
+        </div>
+        <div class="feature-card reveal reveal-delay-3">
+          <div class="feature-icon-app">
+            <img src="icon-192x192.png" alt="EscalApp" style="width:64px;height:64px;border-radius:16px;object-fit:cover;" />
+            <span class="app-name-label">EscalApp</span>
+          </div>
+          <h3>App para celular</h3>
+          <p style="font-size:1.12rem;letter-spacing:0.01em;">Instalala en tu iPhone o Android en segundos. Tu negocio, siempre en el bolsillo.</p>
+          <div class="mini-phone">
+            <div class="mini-phone-screen">
+              <div class="mini-phone-bar"></div>
+              <div class="mini-phone-bar" style="width:60%"></div>
+              <div class="mini-phone-dot"></div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="cta-wrap reveal">
