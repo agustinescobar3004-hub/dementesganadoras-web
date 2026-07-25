@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>EscalApp — Todo lo que tu negocio necesita | De Mentes Ganadoras</title>
+<meta name="description" content="EscalApp es el sistema de gestión con IA para emprendedores que quieren crecer en serio. Conocé todas sus funciones." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0f1117;
+    --bg-alt:#13161f;
+    --accent:#00e5ff;
+    --green:#00c97a;
+    --text:#e8eaf6;
+    --muted:#8a90a8;
+    --dim:#4a5080;
+    --border:#1e2235;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Manrope',system-ui,-apple-system,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  section{position:relative;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
+
+  ::selection{background:rgb(0 229 255 / 0.25);color:#fff;}
+  ::-webkit-scrollbar{width:6px;}
+  ::-webkit-scrollbar-track{background:transparent;}
+  ::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px;}
+
+  /* ── Botones ─────────────────────────────────────────── */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:14px 30px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:15px;
+    letter-spacing:-0.01em;
+    border:none;
+    cursor:pointer;
+    transition:transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease, opacity .2s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg, var(--accent) 0%, var(--green) 100%);
+    color:#06070b;
+    box-shadow:0 8px 30px rgb(0 229 255 / 0.25);
+  }
+  .btn-primary:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 14px 40px rgb(0 229 255 / 0.35);}
+  .btn-primary:active{transform:translateY(0) scale(0.98);}
+  .btn-sm{padding:10px 22px;font-size:13.5px;}
+
+  /* ── Navbar (igual a index.html) ───────────────────────── */
+  #navbar{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:100;
+    padding:12px 0;
+    background:rgb(15 17 23 / 0.82);
+    backdrop-filter:blur(16px) saturate(160%);
+    -webkit-backdrop-filter:blur(16px) saturate(160%);
+    border-bottom:1px solid var(--border);
+  }
+  #navbar .wrap{display:flex;align-items:center;justify-content:space-between;}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:15px;letter-spacing:-0.01em;}
+  .brand-mark{
+    width:32px;height:32px;border-radius:9px;
+    background:linear-gradient(135deg, var(--accent), var(--green));
+    display:flex;align-items:center;justify-content:center;
+    font-weight:900;color:#06070b;font-size:15px;
+    flex-shrink:0;
+  }
+  .brand span{white-space:nowrap;}
+
+  /* ── Reveal on scroll ────────────────────────────────── */
+  .reveal{
+    opacity:0;
+    transform:translateY(26px);
+    transition:opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1);
+  }
+  .reveal.in-view{opacity:1;transform:translateY(0);}
+  .reveal-delay-1{transition-delay:.1s;}
+  .reveal-delay-2{transition-delay:.2s;}
+  .reveal-delay-3{transition-delay:.3s;}
+
+  .section-pad{padding:120px 24px;}
+  @media (max-width:640px){.section-pad{padding:80px 20px;}}
+
+  /* ── Header del producto ────────────────────────────────── */
+  #producto-hero{
+    padding:160px 24px 80px;
+    text-align:center;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% -10%, rgb(0 229 255 / 0.14), transparent 60%),
+      radial-gradient(ellipse 60% 50% at 85% 90%, rgb(0 201 122 / 0.1), transparent 60%),
+      var(--bg);
+  }
+  #producto-hero h1{
+    font-size:clamp(2.1rem, 5vw, 3.6rem);
+    font-weight:800;
+    line-height:1.1;
+    letter-spacing:-0.03em;
+    max-width:820px;
+    margin:0 auto 18px;
+  }
+  #producto-hero h1 .grad{
+    background:linear-gradient(120deg, var(--accent) 10%, var(--green) 90%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  #producto-hero p{
+    color:var(--muted);
+    font-size:clamp(1rem, 2vw, 1.2rem);
+    max-width:560px;
+    margin:0 auto;
+    line-height:1.55;
+    font-weight:500;
+  }
+
+  /* ── Features (grid completo) ──────────────────────────── */
+  #caracteristicas .head{text-align:center;max-width:620px;margin:0 auto 56px;}
+  #caracteristicas h2{font-size:clamp(1.8rem,3.6vw,2.4rem);font-weight:800;letter-spacing:-0.02em;margin-bottom:14px;}
+  #caracteristicas .head p{color:var(--muted);font-size:1.05rem;line-height:1.55;font-weight:500;}
+
+  .features-full{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+  }
+  @media (max-width:720px){.features-full{grid-template-columns:1fr;}}
+  .feature-card{
+    padding:32px 28px;
+    border-radius:20px;
+    border:1px solid var(--border);
+    background:rgb(255 255 255 / 0.02);
+    display:flex;
+    gap:18px;
+    align-items:flex-start;
+    transition:transform .3s cubic-bezier(.22,1,.36,1), border-color .3s ease;
+  }
+  .feature-card:hover{transform:translateY(-6px);border-color:rgb(0 201 122 / 0.3);}
+  .feature-icon{
+    width:48px;height:48px;
+    border-radius:13px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:22px;
+    background:linear-gradient(135deg, rgb(0 229 255 / 0.14), rgb(0 201 122 / 0.14));
+    flex-shrink:0;
+  }
+  .feature-card h3{font-size:1.04rem;font-weight:700;margin-bottom:6px;letter-spacing:-0.01em;}
+  .feature-card p{color:var(--muted);font-size:0.93rem;line-height:1.5;font-weight:500;}
+
+  /* ── Precio ─────────────────────────────────────────────── */
+  #precio{background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+  #precio .head{text-align:center;max-width:560px;margin:0 auto 40px;}
+  #precio h2{font-size:clamp(1.8rem,3.6vw,2.4rem);font-weight:800;letter-spacing:-0.02em;}
+  .price-card{
+    max-width:420px;
+    margin:0 auto;
+    padding:44px 32px;
+    border-radius:22px;
+    border:1px solid var(--border);
+    background:linear-gradient(160deg, rgb(0 229 255 / 0.06), rgb(255 255 255 / 0.015));
+    text-align:center;
+  }
+  .price-value{
+    display:block;
+    font-size:2rem;
+    font-weight:800;
+    letter-spacing:-0.02em;
+    background:linear-gradient(120deg, var(--accent), var(--green));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    margin-bottom:12px;
+  }
+  .price-card p{color:var(--muted);font-size:0.95rem;line-height:1.55;font-weight:500;}
+
+  /* ── CTA final ──────────────────────────────────────────── */
+  #cta-final{text-align:center;padding:100px 24px;}
+  #cta-final p{color:var(--muted);font-size:1.02rem;margin-bottom:28px;font-weight:500;}
+
+  /* ── Footer (igual a index.html) ───────────────────────── */
+  footer{
+    padding:50px 24px 40px;
+    text-align:center;
+    border-top:1px solid var(--border);
+  }
+  footer .brand{justify-content:center;margin-bottom:16px;}
+  footer .links{
+    display:flex;
+    justify-content:center;
+    gap:22px;
+    margin-bottom:20px;
+    font-size:13.5px;
+    color:var(--muted);
+    font-weight:600;
+  }
+  footer .links a{transition:color .2s ease;}
+  footer .links a:hover{color:var(--accent);}
+  footer .copy{color:var(--dim);font-size:12.5px;font-weight:500;}
+
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{animation-duration:0.001s !important;animation-iteration-count:1 !important;transition-duration:0.001s !important;}
+  }
+</style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="wrap">
+      <a href="index.html#hero" class="brand">
+        <span class="brand-mark">DM</span>
+        <span>De Mentes Ganadoras</span>
+      </a>
+      <a href="index.html#form-section" class="btn btn-primary btn-sm">Quiero acceso</a>
+    </div>
+  </nav>
+
+  <section id="producto-hero">
+    <h1 class="reveal in-view">EscalApp — <span class="grad">Todo lo que tu negocio necesita</span></h1>
+    <p class="reveal in-view reveal-delay-1">El sistema de gestión con inteligencia artificial para emprendedores que quieren crecer en serio.</p>
+  </section>
+
+  <section id="caracteristicas" class="section-pad">
+    <div class="wrap">
+      <div class="head reveal">
+        <h2>Todo, en un solo lugar</h2>
+        <p>Cada función pensada para que dejes de improvisar y empieces a escalar.</p>
+      </div>
+      <div class="features-full">
+        <div class="feature-card reveal">
+          <div class="feature-icon">🤖</div>
+          <div>
+            <h3>Asistente IA</h3>
+            <p>Le contás qué pasó — "vendí 2 iPhone a Juan" — y él registra todo por vos, solo.</p>
+          </div>
+        </div>
+        <div class="feature-card reveal reveal-delay-1">
+          <div class="feature-icon">📊</div>
+          <div>
+            <h3>Dashboard en tiempo real</h3>
+            <p>Ventas, ganancia, margen y patrimonio neto, siempre a la vista.</p>
+          </div>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">📝</div>
+          <div>
+            <h3>Notas rápidas con IA</h3>
+            <p>Anotá lo que pasó en el día como quieras y dejá que la IA lo ordene.</p>
+          </div>
+        </div>
+        <div class="feature-card reveal reveal-delay-1">
+          <div class="feature-icon">📦</div>
+          <div>
+            <h3>Control de stock</h3>
+            <p>Sabé exactamente qué tenés, cuánto vale y qué se está por acabar.</p>
+          </div>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">💰</div>
+          <div>
+            <h3>Caja multi-moneda</h3>
+            <p>USD, USDT y pesos, todo unificado y convertido en tiempo real.</p>
+          </div>
+        </div>
+        <div class="feature-card reveal reveal-delay-1">
+          <div class="feature-icon">🔁</div>
+          <div>
+            <h3>Gastos recurrentes</h3>
+            <p>Alquiler, sueldos, servicios — se generan solos como deuda cada mes.</p>
+          </div>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">🤝</div>
+          <div>
+            <h3>Deudores y deudas</h3>
+            <p>Quién te debe y a quién le debés, todo bajo control, sin sorpresas.</p>
+          </div>
+        </div>
+        <div class="feature-card reveal reveal-delay-1">
+          <div class="feature-icon">📈</div>
+          <div>
+            <h3>Reportes claros</h3>
+            <p>Analizá tu negocio con reportes simples y accionables, sin planillas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="precio" class="section-pad">
+    <div class="wrap">
+      <div class="head reveal">
+        <h2>Precio</h2>
+      </div>
+      <!--
+        TODO(MercadoPago): cuando el checkout esté listo, reemplazar el
+        contenido de .price-card por el botón/preferencia de pago de
+        MercadoPago (Checkout Pro o Wallet Brick). Por ahora es un
+        placeholder de "Próximamente" fácil de cambiar.
+      -->
+      <div class="price-card reveal">
+        <span class="price-value">Próximamente</span>
+        <p>Estamos definiendo los planes. Dejá tu mail y sé de los primeros en enterarte cuando esté disponible.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="cta-final">
+    <p class="reveal">¿Listo para organizar tu negocio de una vez?</p>
+    <a href="index.html#form-section" class="btn btn-primary reveal reveal-delay-1">Quiero acceso</a>
+  </section>
+
+  <footer>
+    <a href="index.html#hero" class="brand">
+      <span class="brand-mark">DM</span>
+      <span>De Mentes Ganadoras</span>
+    </a>
+    <div class="links">
+      <a href="https://instagram.com/dementesganadoras" target="_blank" rel="noopener">@dementesganadoras en Instagram</a>
+    </div>
+    <p class="copy">© 2026 De Mentes Ganadoras</p>
+  </footer>
+
+<script>
+(function(){
+  'use strict';
+
+  var revealEls = document.querySelectorAll('.reveal:not(.in-view)');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in-view'); });
+  }
+})();
+</script>
+</body>
+</html>
