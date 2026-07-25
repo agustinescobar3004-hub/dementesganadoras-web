@@ -286,6 +286,17 @@
     font-size:9px;
     flex-shrink:0;
   }
+  .mock-bottom-nav{
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    padding:8px 6px;
+    border-radius:14px;
+    background:rgb(0 0 0 / 0.4);
+    border:1px solid rgb(255 255 255 / 0.06);
+    margin-top:4px;
+  }
+  .mock-bottom-nav span{font-size:14px;opacity:0.7;}
 
   .float-icon{
     position:absolute;
@@ -424,8 +435,21 @@
     background:linear-gradient(135deg, rgb(0 229 255 / 0.14), rgb(0 201 122 / 0.14));
     flex-shrink:0;
   }
-  .feature-card h3{font-size:1.04rem;font-weight:700;margin-bottom:6px;letter-spacing:-0.01em;}
+  .feature-card h3{display:flex;align-items:center;gap:8px;font-size:1.04rem;font-weight:700;margin-bottom:6px;letter-spacing:-0.01em;}
   .feature-card p{color:var(--muted);font-size:0.93rem;line-height:1.5;font-weight:500;}
+  .ia-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:4px;
+    padding:3px 10px;
+    border-radius:999px;
+    background:rgb(0 229 255 / 0.14);
+    border:1px solid rgb(0 229 255 / 0.45);
+    color:var(--accent);
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:0.02em;
+  }
 
   /* ── Precio ─────────────────────────────────────────────── */
   #precio{background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
@@ -488,7 +512,7 @@
     <div class="wrap">
       <a href="index.html#hero" class="brand">
         <span class="brand-mark">DM</span>
-        <span>dementesganadoras</span>
+        <span>deMentesGanadoras</span>
       </a>
       <a href="index.html#form-section" class="btn btn-primary btn-sm">Quiero acceso</a>
     </div>
@@ -530,6 +554,9 @@
             <div class="mock-input-bar">
               <span class="mock-input-placeholder">Contale al asistente...</span>
               <span class="mock-send">➤</span>
+            </div>
+            <div class="mock-bottom-nav">
+              <span>📊</span><span>💰</span><span>📦</span><span>👥</span>
             </div>
           </div>
         </div>
@@ -573,22 +600,22 @@
         <div class="feature-card reveal">
           <div class="feature-icon">🤖</div>
           <div>
-            <h3>Asistente IA</h3>
-            <p>Le contás qué pasó — "vendí 2 iPhone a Juan" — y él registra todo por vos, solo.</p>
+            <h3>Asistente IA <span class="ia-badge">⚡ IA</span></h3>
+            <p>Le mandás un mensaje con todo lo del día y él registra cada movimiento solo. Ventas, compras, deudores — todo en segundos.</p>
           </div>
         </div>
         <div class="feature-card reveal reveal-delay-1">
           <div class="feature-icon">📊</div>
           <div>
             <h3>Dashboard en tiempo real</h3>
-            <p>Ventas, ganancia, margen y patrimonio neto, siempre a la vista.</p>
+            <p>Sabés exactamente cuánto ganás, cuánto vale tu stock y cómo va tu negocio. Sin calculadora, sin adivinar.</p>
           </div>
         </div>
         <div class="feature-card reveal">
           <div class="feature-icon">📝</div>
           <div>
-            <h3>Notas rápidas con IA</h3>
-            <p>Anotá lo que pasó en el día como quieras y dejá que la IA lo ordene.</p>
+            <h3>Notas rápidas con IA <span class="ia-badge">⚡ IA</span></h3>
+            <p>Durante el día anotás rápido lo que pasó. Al final, tu asistente lo procesa todo junto. Sin interrumpir tu jornada.</p>
           </div>
         </div>
         <div class="feature-card reveal reveal-delay-1">
@@ -609,7 +636,7 @@
           <div class="feature-icon">🔁</div>
           <div>
             <h3>Gastos recurrentes</h3>
-            <p>Alquiler, sueldos, servicios — se generan solos como deuda cada mes.</p>
+            <p>Elegís fecha de inicio y vencimiento. Se agrega solo a tus deudas cada mes. Sin tocar nada.</p>
           </div>
         </div>
         <div class="feature-card reveal">

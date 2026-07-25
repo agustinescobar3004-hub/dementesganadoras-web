@@ -354,9 +354,22 @@
     background:linear-gradient(135deg, rgb(0 229 255 / 0.14), rgb(0 201 122 / 0.14));
     margin-bottom:20px;
   }
-  .feature-card h3{font-size:1.08rem;font-weight:700;margin-bottom:10px;letter-spacing:-0.01em;}
+  .feature-card h3{display:flex;align-items:center;gap:8px;font-size:1.08rem;font-weight:700;margin-bottom:10px;letter-spacing:-0.01em;}
   .feature-card p{color:var(--muted);font-size:0.95rem;line-height:1.55;font-weight:500;}
   #producto .cta-wrap{text-align:center;}
+  .ia-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:4px;
+    padding:3px 10px;
+    border-radius:999px;
+    background:rgb(0 229 255 / 0.14);
+    border:1px solid rgb(0 229 255 / 0.45);
+    color:var(--accent);
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:0.02em;
+  }
 
   /* ── Formulario ──────────────────────────────────────── */
   #form-section{
@@ -433,7 +446,7 @@
     <div class="wrap">
       <a href="#hero" class="brand">
         <span class="brand-mark">DM</span>
-        <span>dementesganadoras</span>
+        <span>deMentesGanadoras</span>
       </a>
       <a href="#form-section" class="btn btn-primary btn-sm">Quiero acceso</a>
     </div>
@@ -443,7 +456,7 @@
     <div id="hero-bg-gradient"></div>
     <div id="particles"></div>
     <div class="hero-inner">
-      <div class="eyebrow reveal in-view"><span class="dot"></span> Impulsado por De Mentes Ganadoras</div>
+      <div class="eyebrow reveal in-view"><span class="dot"></span> impulsado por dementesganadoras</div>
       <h1 class="hero-title reveal in-view">Organizá tu negocio.<br><span class="grad">Escalá tu vida.</span></h1>
       <a href="producto.html" class="hero-chip reveal in-view reveal-delay-1">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
@@ -494,24 +507,24 @@
       </div>
       <div class="features">
         <div class="feature-card reveal">
-          <div class="feature-icon">📝</div>
-          <h3>Notas rápidas con IA</h3>
-          <p>Sabemos que no cargás todos tus movimientos durante el día porque estás trabajando. Anotálos en tu agenda de notas a medida que avanza tu jornada y después pasáselos a tu asistente virtual de una sola vez.</p>
-        </div>
-        <div class="feature-card reveal reveal-delay-1">
-          <div class="feature-icon">🤖</div>
-          <h3>Asistente IA</h3>
-          <p>Le contás tus movimientos comerciales y él registra todo solo. Por ejemplo: "Vendí 3 televisores a Marcos a $450, compré 20 auriculares a $8, Lucas me debe $300"</p>
-        </div>
-        <div class="feature-card reveal reveal-delay-2">
-          <div class="feature-icon">📊</div>
-          <h3>Dashboard en tiempo real</h3>
-          <p>Todos tus números — ventas, stock, caja, deudas — de un vistazo.</p>
-        </div>
-        <div class="feature-card reveal reveal-delay-3">
           <div class="feature-icon"><img src="icon-192x192.png" alt="EscalApp" style="width:30px;height:30px;border-radius:8px;object-fit:cover;" /></div>
           <h3>App para celular</h3>
-          <p>Usala desde tu celular en cualquier momento. Dejá la excusa de no usar un sistema porque no tenés computadora. También funciona en desktop.</p>
+          <p>Sin computadora, sin excusas. Instalala en tu iPhone o Android en segundos y llevá tu negocio en el bolsillo.</p>
+        </div>
+        <div class="feature-card reveal reveal-delay-1">
+          <div class="feature-icon">📝</div>
+          <h3>Notas rápidas con IA <span class="ia-badge">⚡ IA</span></h3>
+          <p>Durante el día anotás rápido lo que pasó. Al final, tu asistente lo procesa todo junto. Sin interrumpir tu jornada.</p>
+        </div>
+        <div class="feature-card reveal reveal-delay-2">
+          <div class="feature-icon">🤖</div>
+          <h3>Asistente IA <span class="ia-badge">⚡ IA</span></h3>
+          <p>Le mandás un mensaje con todo lo del día y él registra cada movimiento solo. Ventas, compras, deudores — todo en segundos.</p>
+        </div>
+        <div class="feature-card reveal reveal-delay-3">
+          <div class="feature-icon">📊</div>
+          <h3>Dashboard en tiempo real</h3>
+          <p>Sabés exactamente cuánto ganás, cuánto vale tu stock y cómo va tu negocio. Sin calculadora, sin adivinar.</p>
         </div>
       </div>
       <div class="cta-wrap reveal">
