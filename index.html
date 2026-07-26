@@ -31,7 +31,8 @@
   a{color:inherit;text-decoration:none;}
   img{max-width:100%;display:block;}
   section{position:relative;}
-  .wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px;}
+  @media (min-width:1024px){.wrap{padding:0 40px;}}
 
   ::selection{background:rgb(0 229 255 / 0.25);color:#fff;}
   ::-webkit-scrollbar{width:6px;}
@@ -543,27 +544,12 @@
       </div>
       <div class="features">
         <div class="feature-card reveal">
-          <div class="feature-icon">📝</div>
-          <h3>Notas rápidas <span class="ia-badge">⚡ IA</span></h3>
-          <p>Anotá lo que pasa en el día y al final se lo mandás a tu asistente de una sola vez.</p>
-        </div>
-        <div class="feature-card reveal reveal-delay-1">
-          <div class="feature-icon">🤖</div>
-          <h3>Asistente IA <span class="ia-badge">⚡ IA</span></h3>
-          <p>Le escribís todo lo que pasó y él registra cada movimiento solo, sin formularios.</p>
-        </div>
-        <div class="feature-card reveal reveal-delay-2">
-          <div class="feature-icon">📊</div>
-          <h3>Dashboard en tiempo real</h3>
-          <p>Sabés cuánto ganás y cuánto vale tu stock, sin calculadora ni adivinar.</p>
-        </div>
-        <div class="feature-card reveal reveal-delay-3">
           <div class="feature-icon-app">
-            <img src="icon-192x192.png" alt="EscalApp" style="width:64px;height:64px;border-radius:16px;object-fit:cover;" />
+            <img src="icon-192x192.png" alt="EscalApp" style="width:70px;height:70px;border-radius:17px;object-fit:cover;" />
             <span class="app-name-label">EscalApp</span>
           </div>
           <h3>App para celular</h3>
-          <p style="font-size:1.12rem;letter-spacing:0.01em;">Instalala en tu iPhone o Android en segundos. Tu negocio, siempre en el bolsillo.</p>
+          <p style="font-size:1.12rem;letter-spacing:0.01em;">Sin computadora, sin excusas. Instalala en tu iPhone o Android en segundos y llevá tu negocio siempre con vos.</p>
           <div class="mini-phone">
             <div class="mini-phone-screen">
               <div class="mini-phone-bar"></div>
@@ -571,6 +557,21 @@
               <div class="mini-phone-dot"></div>
             </div>
           </div>
+        </div>
+        <div class="feature-card reveal reveal-delay-1">
+          <div class="feature-icon">📝</div>
+          <h3>Notas rápidas <span class="ia-badge">⚡ IA</span></h3>
+          <p>No siempre podés cargar tus movimientos en el momento — estás trabajando. Anotá lo que pasa durante tu jornada y al final, con un solo botón, se lo mandás a tu asistente. Él interpreta todo y deja tu negocio actualizado.</p>
+        </div>
+        <div class="feature-card reveal reveal-delay-2">
+          <div class="feature-icon">🤖</div>
+          <h3>Asistente IA <span class="ia-badge">⚡ IA</span></h3>
+          <p>Le escribís tus movimientos comerciales del día y él los registra todos solo. Ventas, compras, cobros, deudas — sin formularios, sin pasos extra.</p>
+        </div>
+        <div class="feature-card reveal reveal-delay-3">
+          <div class="feature-icon">📊</div>
+          <h3>Dashboard en tiempo real</h3>
+          <p>Sabés exactamente cuánto ganás, cuánto vale tu stock y cómo va tu negocio. Sin calculadora, sin adivinar.</p>
         </div>
       </div>
       <div class="cta-wrap reveal">
