@@ -131,25 +131,26 @@
     line-height:1.55;
     font-weight:500;
   }
+  .btn-buy-wrap{margin-top:32px;display:flex;flex-direction:column;align-items:center;gap:10px;}
   .btn-buy{
     display:inline-flex;
     align-items:center;
     justify-content:center;
     gap:10px;
-    margin-top:32px;
     padding:20px 48px;
     border-radius:999px;
-    background:linear-gradient(135deg, var(--accent) 0%, var(--green) 100%);
-    color:#06070b;
+    background:#00b050;
+    color:#fff;
     font-size:19px;
     font-weight:800;
     letter-spacing:-0.01em;
     border:none;
     cursor:pointer;
-    box-shadow:0 12px 40px rgb(0 229 255 / 0.45), 0 0 60px rgb(0 201 122 / 0.25);
+    box-shadow:0 12px 36px rgb(0 176 80 / 0.45);
     transition:transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease;
   }
-  .btn-buy:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 18px 50px rgb(0 229 255 / 0.55), 0 0 70px rgb(0 201 122 / 0.35);}
+  .btn-buy:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 18px 46px rgb(0 176 80 / 0.55);}
+  .btn-buy-note{font-size:12.5px;color:var(--muted);font-weight:600;letter-spacing:0.01em;}
 
   /* ── Mockup de EscalApp ─────────────────────────────────── */
   #mockup-showcase{padding:20px 24px 100px;}
@@ -448,6 +449,14 @@
     transition:transform .3s cubic-bezier(.22,1,.36,1), border-color .3s ease;
   }
   .feature-card:hover{transform:translateY(-6px);border-color:rgb(0 201 122 / 0.3);}
+  .feature-card-featured{
+    grid-column:1 / -1;
+    padding:38px 34px;
+    border:2px solid rgb(0 229 255 / 0.5);
+    background:linear-gradient(135deg, rgb(0 229 255 / 0.08), rgb(0 201 122 / 0.05));
+    box-shadow:0 20px 50px -20px rgb(0 229 255 / 0.4), 0 0 0 1px rgb(0 229 255 / 0.08) inset;
+  }
+  .feature-card-featured:hover{border-color:rgb(0 229 255 / 0.75);}
   .feature-icon{
     width:48px;height:48px;
     border-radius:13px;
@@ -542,8 +551,11 @@
   <section id="producto-hero">
     <h1 class="reveal in-view">Organizá tu negocio.<br><span class="grad">Escalá tu vida.</span></h1>
     <p class="reveal in-view reveal-delay-1">EscalApp — El sistema con IA que trabaja mientras vos te enfocás en vender.</p>
-    <!-- COMPRA: conectar MercadoPago aquí -->
-    <a href="index.html#form-section" class="btn-buy reveal in-view reveal-delay-2">Adquirí ahora</a>
+    <div class="btn-buy-wrap reveal in-view reveal-delay-2">
+      <!-- COMPRA: conectar MercadoPago aquí -->
+      <a href="index.html#form-section" class="btn-buy">Adquirí ahora</a>
+      <span class="btn-buy-note">🏷️ 20% OFF — Precio de lanzamiento</span>
+    </div>
   </section>
 
   <section id="mockup-showcase">
@@ -621,17 +633,31 @@
       </div>
       <div class="features-full">
         <div class="feature-card reveal">
+          <div class="feature-icon">🤖</div>
+          <div>
+            <h3>Asistente IA <span class="ia-badge">⚡ IA</span></h3>
+            <p>Tu asistente entiende lenguaje natural. Le escribís todo lo que pasó — ventas, compras, cobros, deudas — y él registra cada movimiento solo en el sistema. Sin formularios, sin pasos, sin perder tiempo.</p>
+          </div>
+        </div>
+        <div class="feature-card reveal reveal-delay-1">
           <div class="feature-icon">📝</div>
           <div>
             <h3>Notas rápidas <span class="ia-badge">⚡ IA</span></h3>
             <p>No siempre podés cargar tus movimientos en el momento porque estás trabajando. Por eso EscalApp tiene notas rápidas: anotás lo que va pasando durante tu jornada comercial, y al final del día, con un solo botón, se lo mandás a tu asistente IA. Él lee todo, interpreta cada movimiento y deja tu negocio estructurado y actualizado.</p>
           </div>
         </div>
-        <div class="feature-card reveal reveal-delay-1">
-          <div class="feature-icon">🤖</div>
+        <div class="feature-card feature-card-featured reveal">
+          <div class="feature-icon"><img src="icon-192x192.png" alt="EscalApp" style="width:30px;height:30px;border-radius:8px;object-fit:cover;" /></div>
           <div>
-            <h3>Asistente IA <span class="ia-badge">⚡ IA</span></h3>
-            <p>Tu asistente entiende lenguaje natural. Le escribís todo lo que pasó — ventas, compras, cobros, deudas — y él registra cada movimiento solo en el sistema. Sin formularios, sin pasos, sin perder tiempo.</p>
+            <h3>App para celular</h3>
+            <p>Sin computadora, sin excusas. Instalala en tu iPhone o Android en segundos. Tu negocio siempre en el bolsillo.</p>
+          </div>
+        </div>
+        <div class="feature-card reveal reveal-delay-1">
+          <div class="feature-icon">🔁</div>
+          <div>
+            <h3>Gastos recurrentes <span class="ia-badge">⚡ IA</span></h3>
+            <p>Cargás tus gastos fijos una sola vez. Elegís fecha de inicio y vencimiento, y cada mes se agregan solos a tus deudas. Sin recordatorios, sin olvidarte de nada.</p>
           </div>
         </div>
         <div class="feature-card reveal">
@@ -642,38 +668,24 @@
           </div>
         </div>
         <div class="feature-card reveal reveal-delay-1">
-          <div class="feature-icon"><img src="icon-192x192.png" alt="EscalApp" style="width:30px;height:30px;border-radius:8px;object-fit:cover;" /></div>
-          <div>
-            <h3>App para celular</h3>
-            <p>Sin computadora, sin excusas. Instalala en tu iPhone o Android en segundos. Tu negocio siempre en el bolsillo.</p>
-          </div>
-        </div>
-        <div class="feature-card reveal">
           <div class="feature-icon">📦</div>
           <div>
             <h3>Stock automático</h3>
             <p>Cada compra y venta actualiza tu inventario solo. Siempre sabés cuántas unidades tenés y cuánto vale lo que tenés en stock.</p>
           </div>
         </div>
-        <div class="feature-card reveal reveal-delay-1">
+        <div class="feature-card reveal">
           <div class="feature-icon">💰</div>
           <div>
             <h3>Control de caja</h3>
             <p>Tres balances en un solo lugar: dólares en efectivo, USDT y pesos. Total claro, siempre actualizado.</p>
           </div>
         </div>
-        <div class="feature-card reveal">
+        <div class="feature-card reveal reveal-delay-1">
           <div class="feature-icon">👥</div>
           <div>
             <h3>Clientes y proveedores</h3>
             <p>Historial completo de cada cliente y proveedor. Deudores y deudas bajo control, con un solo vistazo.</p>
-          </div>
-        </div>
-        <div class="feature-card reveal reveal-delay-1">
-          <div class="feature-icon">🔁</div>
-          <div>
-            <h3>Gastos recurrentes</h3>
-            <p>Cargás tus gastos fijos una sola vez. Elegís fecha de inicio y vencimiento, y cada mes se agregan solos a tus deudas. Sin recordatorios, sin olvidarte de nada.</p>
           </div>
         </div>
       </div>
