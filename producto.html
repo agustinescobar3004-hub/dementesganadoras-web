@@ -130,6 +130,25 @@
     line-height:1.55;
     font-weight:500;
   }
+  .btn-buy{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    margin-top:32px;
+    padding:20px 48px;
+    border-radius:999px;
+    background:linear-gradient(135deg, var(--accent) 0%, var(--green) 100%);
+    color:#06070b;
+    font-size:19px;
+    font-weight:800;
+    letter-spacing:-0.01em;
+    border:none;
+    cursor:pointer;
+    box-shadow:0 12px 40px rgb(0 229 255 / 0.45), 0 0 60px rgb(0 201 122 / 0.25);
+    transition:transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease;
+  }
+  .btn-buy:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 18px 50px rgb(0 229 255 / 0.55), 0 0 70px rgb(0 201 122 / 0.35);}
 
   /* ── Mockup de EscalApp ─────────────────────────────────── */
   #mockup-showcase{padding:20px 24px 100px;}
@@ -413,6 +432,7 @@
   .features-full{
     display:grid;
     grid-template-columns:repeat(2,1fr);
+    align-items:start;
     gap:20px;
   }
   @media (max-width:720px){.features-full{grid-template-columns:1fr;}}
@@ -512,7 +532,7 @@
     <div class="wrap">
       <a href="index.html#hero" class="brand">
         <span class="brand-mark">DM</span>
-        <span>deMentesGanadoras</span>
+        <span>DeMentesGanadoras</span>
       </a>
       <a href="index.html#form-section" class="btn btn-primary btn-sm">Quiero acceso</a>
     </div>
@@ -521,6 +541,8 @@
   <section id="producto-hero">
     <h1 class="reveal in-view">Organizá tu negocio.<br><span class="grad">Escalá tu vida.</span></h1>
     <p class="reveal in-view reveal-delay-1">EscalApp — El sistema con IA que trabaja mientras vos te enfocás en vender.</p>
+    <!-- COMPRA: reemplazar href por link de MercadoPago cuando esté listo -->
+    <a href="index.html#form-section" class="btn-buy reveal in-view reveal-delay-2">Adquirí ahora</a>
   </section>
 
   <section id="mockup-showcase">
