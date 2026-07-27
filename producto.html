@@ -84,6 +84,7 @@
     font-weight:900;color:#06070b;font-size:15px;
     flex-shrink:0;
   }
+  .brand-logo-img{width:32px;height:32px;border-radius:9px;object-fit:cover;flex-shrink:0;}
   .brand span{white-space:nowrap;}
 
   /* ── Reveal on scroll ────────────────────────────────── */
@@ -130,6 +131,33 @@
     margin:0 auto;
     line-height:1.55;
     font-weight:500;
+  }
+  .hero-sub{max-width:640px;margin:0 auto;}
+  .hero-sub-line1{
+    display:block;
+    font-size:clamp(1.3rem, 3vw, 1.7rem);
+    font-weight:800;
+    color:#fff;
+    text-transform:uppercase;
+    letter-spacing:-0.01em;
+    line-height:1.25;
+  }
+  .hero-sub-line2{
+    display:block;
+    margin-top:8px;
+    font-size:clamp(1rem, 2vw, 1.15rem);
+    font-weight:500;
+    color:var(--muted);
+  }
+  .hero-sub-line3{
+    display:block;
+    margin-top:12px;
+    color:var(--green);
+    font-weight:800;
+    font-style:italic;
+    font-size:clamp(1.15rem, 2.4vw, 1.4rem);
+    letter-spacing:-0.01em;
+    line-height:1.3;
   }
   .btn-buy-wrap{margin-top:32px;display:flex;flex-direction:column;align-items:center;gap:10px;}
   .btn-buy{
@@ -426,6 +454,36 @@
     .badge-pill{font-size:13.5px;padding:16px 22px;max-width:none;}
   }
 
+  /* ── Cómo funciona ──────────────────────────────────────── */
+  #como-funciona .head{text-align:center;max-width:600px;margin:0 auto 52px;}
+  #como-funciona h2{font-size:clamp(1.8rem,3.6vw,2.4rem);font-weight:800;letter-spacing:-0.02em;}
+  .steps-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  @media (max-width:860px){.steps-grid{grid-template-columns:1fr;}}
+  .step-card{
+    text-align:center;
+    padding:38px 28px;
+    border-radius:20px;
+    border:1px solid var(--border);
+    background:rgb(255 255 255 / 0.02);
+    transition:transform .3s cubic-bezier(.22,1,.36,1), border-color .3s ease;
+  }
+  .step-card:hover{transform:translateY(-6px);border-color:rgb(0 229 255 / 0.3);}
+  .step-number{
+    font-size:3.4rem;
+    font-weight:900;
+    color:var(--accent);
+    text-shadow:0 0 30px rgb(0 229 255 / 0.45);
+    line-height:1;
+    margin-bottom:16px;
+    letter-spacing:-0.02em;
+  }
+  .step-card h3{font-size:1.2rem;font-weight:800;margin-bottom:10px;letter-spacing:-0.01em;}
+  .step-card p{color:var(--muted);font-size:0.98rem;line-height:1.55;font-weight:500;}
+
   /* ── Features (grid completo) ──────────────────────────── */
   #caracteristicas .head{text-align:center;max-width:620px;margin:0 auto 56px;}
   #caracteristicas h2{font-size:clamp(1.8rem,3.6vw,2.4rem);font-weight:800;letter-spacing:-0.02em;margin-bottom:14px;}
@@ -435,11 +493,11 @@
     display:grid;
     grid-template-columns:repeat(2,1fr);
     align-items:start;
-    gap:20px;
+    gap:28px;
   }
   @media (max-width:720px){.features-full{grid-template-columns:1fr;}}
   .feature-card{
-    padding:32px 28px;
+    padding:34px 30px;
     border-radius:20px;
     border:1px solid var(--border);
     background:rgb(255 255 255 / 0.02);
@@ -465,8 +523,9 @@
     background:linear-gradient(135deg, rgb(0 229 255 / 0.14), rgb(0 201 122 / 0.14));
     flex-shrink:0;
   }
-  .feature-card h3{display:flex;align-items:center;gap:8px;font-size:1.04rem;font-weight:700;margin-bottom:6px;letter-spacing:-0.01em;}
-  .feature-card p{color:var(--muted);font-size:0.93rem;line-height:1.5;font-weight:500;}
+  .feature-card h3{display:flex;align-items:center;flex-wrap:wrap;gap:8px;font-size:1.25rem;font-weight:800;margin-bottom:10px;letter-spacing:-0.01em;}
+  .feature-divider{width:38px;height:3px;background:var(--accent);border-radius:2px;margin:0 0 14px;box-shadow:0 0 10px rgb(0 229 255 / 0.5);}
+  .feature-card p{color:var(--muted);font-size:0.95rem;line-height:1.6;font-weight:500;}
   .feature-card p strong{color:var(--accent);font-weight:800;}
   .ia-badge{
     display:inline-flex;
@@ -542,7 +601,7 @@
   <nav id="navbar">
     <div class="wrap">
       <a href="index.html#hero" class="brand">
-        <span class="brand-mark">DM</span>
+        <img src="icon-192x192.png" alt="EscalApp" class="brand-logo-img" />
         <span>DeMentesGanadoras</span>
       </a>
       <a href="index.html#form-section" class="btn btn-primary btn-sm">Quiero acceso</a>
@@ -551,7 +610,11 @@
 
   <section id="producto-hero">
     <h1 class="reveal in-view">Organizá tu negocio.<br><span class="grad">Escalá tu vida.</span></h1>
-    <p class="reveal in-view reveal-delay-1">EscalApp — El sistema con IA que trabaja mientras vos te enfocás en vender.</p>
+    <p class="hero-sub reveal in-view reveal-delay-1">
+      <span class="hero-sub-line1">TU SISTEMA FINANCIERO EN APLICACIÓN MÓVIL</span>
+      <span class="hero-sub-line2">con asistente IA incluido</span>
+      <span class="hero-sub-line3">para que vos y tu negocio crezcan como nunca.</span>
+    </p>
     <div class="btn-buy-wrap reveal in-view reveal-delay-2">
       <!-- COMPRA: conectar MercadoPago aquí -->
       <a href="index.html#form-section" class="btn-buy">Adquirí ahora</a>
@@ -626,6 +689,31 @@
     </div>
   </section>
 
+  <section id="como-funciona" class="section-pad">
+    <div class="wrap">
+      <div class="head reveal">
+        <h2>¿Cómo funciona?</h2>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card reveal">
+          <div class="step-number">1</div>
+          <h3>Adquirís tu sistema</h3>
+          <p>Comprás EscalApp con IA incluido y recibís tu código único en tu email.</p>
+        </div>
+        <div class="step-card reveal reveal-delay-1">
+          <div class="step-number">2</div>
+          <h3>Creás tu cuenta</h3>
+          <p>Iniciás sesión, usás tu código y en minutos tenés tu negocio configurado.</p>
+        </div>
+        <div class="step-card reveal reveal-delay-2">
+          <div class="step-number">3</div>
+          <h3>Tu negocio automatizado desde el día 1</h3>
+          <p>El asistente IA empieza a trabajar. Vos a vender.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="caracteristicas" class="section-pad">
     <div class="wrap">
       <div class="head reveal">
@@ -637,56 +725,104 @@
           <div class="feature-icon">🤖</div>
           <div>
             <h3>Asistente IA <span class="ia-badge">⚡ IA</span></h3>
-            <p>Le pasás tus movimientos financieros/comerciales basándote en la estructura de tu negocio, él los registra y te acomoda <strong>TODO</strong> solo. Stock, ventas, compras, cobros, deudas — sin formularios, sin trabas, vos enfocado en crecer.</p>
+            <div class="feature-divider"></div>
+            <p>
+              Le pasás tus movimientos financieros/comerciales basándote en la estructura de tu negocio, él los registra y te acomoda <strong>TODO</strong> solo.
+              <br><br>
+              Stock, ventas, compras, cobros, deudas.
+              <br><br>
+              Sin formularios, sin trabas, vos enfocado en crecer.
+            </p>
           </div>
         </div>
         <div class="feature-card reveal reveal-delay-1">
           <div class="feature-icon">📝</div>
           <div>
             <h3>Notas rápidas <span class="ia-badge">⚡ IA</span></h3>
-            <p>No siempre tenés el tiempo de cargar tus movimientos financieros/comerciales en el momento — estás trabajando. Anotá tus movimientos comerciales en nuestra app durante tu jornada y al final, <strong>CON SOLO UN BOTÓN</strong>, se lo mandás a tu asistente IA. Él interpreta todo y deja tu negocio ordenado y actualizado.</p>
+            <div class="feature-divider"></div>
+            <p>
+              No siempre tenés el tiempo de cargar tus movimientos financieros/comerciales en el momento — estás trabajando.
+              <br><br>
+              Anotá tus movimientos comerciales en nuestra app durante tu jornada y al final, <strong>CON SOLO UN BOTÓN</strong>, se lo mandás a tu asistente IA.
+              <br><br>
+              Él interpreta todo y deja tu negocio ordenado y actualizado.
+            </p>
           </div>
         </div>
         <div class="feature-card feature-card-featured reveal">
           <div class="feature-icon"><img src="icon-192x192.png" alt="EscalApp" style="width:30px;height:30px;border-radius:8px;object-fit:cover;" /></div>
           <div>
             <h3>App para celular <span class="ia-badge">💎</span></h3>
-            <p>Sin excusas. Instalala en tu celular en segundos. Tu negocio siempre en el bolsillo.<br>✅ Disponible en todas las plataformas.</p>
+            <div class="feature-divider"></div>
+            <p>
+              Sin excusas.<br>
+              Instalala en tu celular en segundos.<br>
+              Tu negocio siempre en el bolsillo.
+              <br><br>
+              ✅ Disponible en todas las plataformas.
+            </p>
           </div>
         </div>
         <div class="feature-card reveal reveal-delay-1">
           <div class="feature-icon">🔁</div>
           <div>
             <h3>Gastos recurrentes <span class="ia-badge">⚡ IA</span></h3>
-            <p>Cargás tus gastos fijos una sola vez. Elegís fecha de inicio y vencimiento, y cada mes cuando llegue la fecha de pago se agregan solos a tus deudas.<br>✅ Muy favorable para medir los gastos recurrentes del negocio.</p>
+            <div class="feature-divider"></div>
+            <p>
+              Cargás tus gastos fijos una sola vez.
+              <br><br>
+              Elegís fecha de inicio y vencimiento, y cada mes cuando llegue la fecha de pago se agregan solos a tus deudas.
+              <br><br>
+              ✅ Muy favorable para medir los gastos recurrentes del negocio.
+            </p>
           </div>
         </div>
         <div class="feature-card reveal">
           <div class="feature-icon">📊</div>
           <div>
             <h3>Dashboard en tiempo real</h3>
-            <p>Sabés exactamente dónde está parado tu negocio, cuánto ganás, cuánto vale tu stock, cuánto debés y te deben 🚀. Sin calculadora, sin adivinar, sin esperar fin de mes.</p>
+            <div class="feature-divider"></div>
+            <p>
+              Sabés exactamente dónde está parado tu negocio, cuánto ganás, cuánto vale tu stock, cuánto debés y te deben 🚀.
+              <br><br>
+              Sin calculadora, sin adivinar, sin esperar fin de mes.
+            </p>
           </div>
         </div>
         <div class="feature-card reveal reveal-delay-1">
           <div class="feature-icon">📦</div>
           <div>
             <h3>Stock automático</h3>
-            <p>Cada compra y venta actualiza tu inventario solo. Siempre sabés cuántas unidades tenés y cuánto vale lo que tenés en stock.</p>
+            <div class="feature-divider"></div>
+            <p>
+              Cada compra y venta actualiza tu inventario solo.
+              <br><br>
+              Siempre sabés cuántas unidades tenés y cuánto vale lo que tenés en stock.
+            </p>
           </div>
         </div>
         <div class="feature-card reveal">
           <div class="feature-icon">💰</div>
           <div>
             <h3>Control de caja</h3>
-            <p>Tres balances en un solo lugar: dólares en efectivo, USDT y pesos. Total claro, siempre actualizado.</p>
+            <div class="feature-divider"></div>
+            <p>
+              Tres balances en un solo lugar: dólares en efectivo, USDT y pesos.
+              <br><br>
+              Total claro, siempre actualizado.
+            </p>
           </div>
         </div>
         <div class="feature-card reveal reveal-delay-1">
           <div class="feature-icon">👥</div>
           <div>
             <h3>Clientes y proveedores</h3>
-            <p>Historial completo de cada cliente y proveedor. Deudores y deudas bajo control, con un solo vistazo.</p>
+            <div class="feature-divider"></div>
+            <p>
+              Historial completo de cada cliente y proveedor.
+              <br><br>
+              Deudores y deudas bajo control, con un solo vistazo.
+            </p>
           </div>
         </div>
       </div>
