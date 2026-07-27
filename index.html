@@ -165,6 +165,7 @@
     color:transparent;
   }
   .hero-chip{
+    position:relative;
     display:inline-flex;
     align-items:center;
     gap:8px;
@@ -181,6 +182,20 @@
     transition:transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease;
   }
   .hero-chip:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 14px 36px rgb(0 201 122 / 0.5);}
+  .chip-badge{
+    position:absolute;
+    bottom:-9px;right:-10px;
+    background:#ff4d6a;
+    color:#fff;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:0.01em;
+    padding:3px 10px;
+    border-radius:999px;
+    border:2px solid var(--bg);
+    box-shadow:0 4px 12px rgba(255,77,106,0.5);
+    white-space:nowrap;
+  }
   .hero-sub{
     font-size:clamp(1.02rem, 2vw, 1.25rem);
     color:var(--muted);
@@ -358,6 +373,7 @@
   }
   .feature-card h3{display:flex;align-items:center;flex-wrap:wrap;gap:10px;font-size:1.4rem;font-weight:800;margin-bottom:12px;letter-spacing:-0.015em;}
   .feature-card p{color:var(--muted);font-size:1.05rem;line-height:1.6;font-weight:500;}
+  .feature-card p strong{color:var(--accent);font-weight:800;}
   #producto .cta-wrap{text-align:center;}
   .ia-badge{
     display:inline-flex;
@@ -498,8 +514,9 @@
       <a href="producto.html" class="hero-chip reveal in-view reveal-delay-1">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
         EscalApp
+        <span class="chip-badge">20% OFF</span>
       </a>
-      <p class="hero-sub reveal in-view reveal-delay-2">La aplicación con asistente IA incluido que trabaja mientras vos te enfocás en vender.</p>
+      <p class="hero-sub reveal in-view reveal-delay-2">Tu sistema financiero ahora en aplicación móvil con asistente IA incluido — para que vos y tu negocio crezcan como nunca.</p>
       <a href="producto.html" class="btn btn-primary reveal in-view reveal-delay-3">Quiero empezar</a>
     </div>
     <a href="#problema" class="hero-scroll-arrow" id="scroll-arrow" aria-label="Ver más abajo">
@@ -549,7 +566,7 @@
             <span class="app-name-label">EscalApp</span>
           </div>
           <h3>App para celular</h3>
-          <p style="font-size:1.12rem;letter-spacing:0.01em;">Sin computadora, sin excusas. Instalala en tu iPhone o Android en segundos y llevá tu negocio siempre con vos.</p>
+          <p style="font-size:1.12rem;letter-spacing:0.01em;">Sin excusas. Instalala en tu celular en segundos. Tu negocio siempre en el bolsillo.<br>✅ Disponible en todas las plataformas.</p>
           <div class="mini-phone">
             <div class="mini-phone-screen">
               <div class="mini-phone-bar"></div>
@@ -561,17 +578,17 @@
         <div class="feature-card reveal reveal-delay-1">
           <div class="feature-icon">📝</div>
           <h3>Notas rápidas <span class="ia-badge">⚡ IA</span></h3>
-          <p>No siempre tenés tiempo de cargar tus movimientos financieros/comerciales en el momento — estás trabajando. Anotá tus movimientos en nuestra app durante tu jornada y al final, con un solo botón, se lo mandás a tu asistente IA. Él interpreta todo y deja tu negocio ordenado y actualizado.</p>
+          <p>No siempre tenés el tiempo de cargar tus movimientos financieros/comerciales en el momento — estás trabajando. Anotá tus movimientos comerciales en nuestra app durante tu jornada y al final, <strong>CON SOLO UN BOTÓN</strong>, se lo mandás a tu asistente IA. Él interpreta todo y deja tu negocio ordenado y actualizado.</p>
         </div>
         <div class="feature-card reveal reveal-delay-2">
           <div class="feature-icon">🤖</div>
           <h3>Asistente IA <span class="ia-badge">⚡ IA</span></h3>
-          <p>Le pasás todos tus movimientos financieros/comerciales basándote en la estructura de tu negocio, él los registra todos solo. Ventas, compras, cobros, deudas — sin formularios, sin pasos extra, vos enfocado en crecer.</p>
+          <p>Le escribís los movimientos financieros/comerciales basándote en la estructura de tu negocio, él los registra todos solo. Ventas, compras, cobros, deudas — sin formularios, sin pasos extra, <strong>VOS ENFOCADO EN CRECER</strong>.</p>
         </div>
         <div class="feature-card reveal reveal-delay-3">
           <div class="feature-icon">📊</div>
           <h3>Dashboard en tiempo real</h3>
-          <p>Sabés exactamente cuánto ganás, cuánto vale tu stock y cómo va tu negocio. Sin calculadora, sin adivinar.</p>
+          <p>Sabés exactamente dónde está parado tu negocio, cuánto ganás, cuánto vale tu stock y cómo va tu negocio. Sin calculadora, sin adivinar, sin perder tiempo. <strong>TODO ORDENADO</strong>.</p>
         </div>
       </div>
       <div class="cta-wrap reveal">
