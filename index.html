@@ -153,13 +153,16 @@
   @keyframes pulse-dot{0%,100%{opacity:1;}50%{opacity:0.4;}}
 
   h1.hero-title{
-    font-size:clamp(2.3rem, 6vw, 4.8rem);
+    font-size:clamp(1.5rem, 6.4vw, 4.4rem);
     font-weight:800;
-    line-height:1.12;
-    letter-spacing:-0.03em;
+    line-height:1.18;
+    letter-spacing:-0.02em;
     margin-bottom:18px;
+    padding:0 20px;
   }
   h1.hero-title span{display:block;}
+  h1.hero-title .c-white{color:#fff;font-weight:800;}
+  h1.hero-title .c-cyan{color:var(--accent);font-weight:900;}
   h1.hero-title .grad{
     color:var(--green);
     font-weight:900;
@@ -288,11 +291,6 @@
     overflow:hidden;
     transition:transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease;
   }
-  .problem-card.card-green{
-    border-color:rgb(0 201 122 / 0.4);
-    background:linear-gradient(160deg, rgb(0 201 122 / 0.08), rgb(255 255 255 / 0.01));
-    box-shadow:0 0 0 1px rgb(0 201 122 / 0.05) inset, 0 24px 50px -24px rgb(0 201 122 / 0.38);
-  }
   .problem-card.card-red{
     border-color:rgb(255 77 106 / 0.45);
     background:linear-gradient(160deg, rgb(255 77 106 / 0.08), rgb(255 255 255 / 0.01));
@@ -301,9 +299,6 @@
   .problem-card:hover{
     transform:translateY(-8px) scale(1.015);
     box-shadow:0 0 0 1px rgb(0 229 255 / 0.1) inset, 0 30px 60px -24px rgb(0 229 255 / 0.5);
-  }
-  .problem-card.card-green:hover{
-    box-shadow:0 0 0 1px rgb(0 201 122 / 0.1) inset, 0 30px 60px -24px rgb(0 201 122 / 0.5);
   }
   .problem-card.card-red:hover{
     box-shadow:0 0 0 1px rgb(255 77 106 / 0.12) inset, 0 30px 60px -24px rgb(255 77 106 / 0.55);
@@ -318,7 +313,6 @@
     z-index:0;
     pointer-events:none;
   }
-  .problem-card.card-green .q-mark{color:rgb(0 201 122 / 0.18);}
   .problem-card.card-red .q-mark{color:rgb(255 77 106 / 0.2);}
   .problem-card .q-text{position:relative;z-index:1;display:block;}
   .problema-close{
@@ -332,34 +326,48 @@
   }
 
   /* ── Cómo funciona ──────────────────────────────────────── */
-  #como-funciona .head{text-align:center;max-width:600px;margin:0 auto 52px;}
-  #como-funciona h2{font-size:clamp(1.8rem,3.6vw,2.4rem);font-weight:800;letter-spacing:-0.02em;}
-  .steps-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:24px;
+  #como-funciona{padding:64px 24px;}
+  @media (max-width:640px){#como-funciona{padding:48px 20px;}}
+  #como-funciona .head{text-align:center;max-width:600px;margin:0 auto 28px;}
+  #como-funciona h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:800;letter-spacing:-0.02em;}
+  .steps-row{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    max-width:900px;
+    margin:0 auto;
   }
-  @media (max-width:860px){.steps-grid{grid-template-columns:1fr;}}
-  .step-card{
-    text-align:center;
-    padding:38px 28px;
-    border-radius:20px;
+  @media (max-width:720px){
+    .steps-row{justify-content:flex-start;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
+  }
+  .step-mini{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 18px;
+    border-radius:14px;
     border:1px solid var(--border);
     background:rgb(255 255 255 / 0.02);
-    transition:transform .3s cubic-bezier(.22,1,.36,1), border-color .3s ease;
+    flex:1;
+    min-width:150px;
+    flex-shrink:0;
+    transition:border-color .3s ease;
   }
-  .step-card:hover{transform:translateY(-6px);border-color:rgb(0 229 255 / 0.3);}
-  .step-number{
-    font-size:3.4rem;
+  .step-mini:hover{border-color:rgb(0 229 255 / 0.3);}
+  .step-mini-num{
+    width:28px;height:28px;
+    border-radius:50%;
+    background:var(--accent);
+    color:#06070b;
     font-weight:900;
-    color:var(--accent);
-    text-shadow:0 0 30px rgb(0 229 255 / 0.45);
-    line-height:1;
-    margin-bottom:16px;
-    letter-spacing:-0.02em;
+    font-size:13px;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+    box-shadow:0 0 12px rgb(0 229 255 / 0.5);
   }
-  .step-card h3{font-size:1.2rem;font-weight:800;margin-bottom:10px;letter-spacing:-0.01em;}
-  .step-card p{color:var(--muted);font-size:0.98rem;line-height:1.55;font-weight:500;}
+  .step-mini-text{font-size:0.88rem;font-weight:700;letter-spacing:-0.005em;line-height:1.25;}
+  .step-arrow{font-size:18px;color:var(--accent);flex-shrink:0;}
 
   /* ── EscalApp ────────────────────────────────────────── */
   #producto .head{text-align:center;max-width:620px;margin:0 auto 64px;}
@@ -566,8 +574,8 @@
     <div class="hero-inner">
       <div class="eyebrow reveal in-view"><span class="dot"></span> impulsado por DeMentesGanadoras</div>
       <h1 class="hero-title reveal in-view">
-        <span>Organizá y potenciá tu negocio</span>
-        <span>desde una sola app con IA</span>
+        <span class="c-white">Organizá y potenciá tu negocio</span>
+        <span class="c-cyan">desde una sola app con IA</span>
         <span class="grad">— llegó EscalApp</span>
       </h1>
       <a href="producto.html" class="hero-chip reveal in-view reveal-delay-1">
@@ -599,7 +607,7 @@
           <span class="q-mark">?</span>
           <span class="q-text">¿No sabés cuánto ganaste este mes?</span>
         </div>
-        <div class="problem-card card-green reveal reveal-delay-1">
+        <div class="problem-card card-red reveal reveal-delay-1">
           <span class="q-mark">?</span>
           <span class="q-text">¿Tenés clientes que te deben plata?</span>
         </div>
@@ -607,7 +615,7 @@
           <span class="q-mark">?</span>
           <span class="q-text">Tu stock nunca coincide con lo que tenés</span>
         </div>
-        <div class="problem-card card-green reveal reveal-delay-3">
+        <div class="problem-card card-red reveal reveal-delay-3">
           <span class="q-mark">?</span>
           <span class="q-text">Perdés tiempo haciendo cuentas a mano</span>
         </div>
@@ -625,21 +633,20 @@
       <div class="head reveal">
         <h2>¿Cómo funciona?</h2>
       </div>
-      <div class="steps-grid">
-        <div class="step-card reveal">
-          <div class="step-number">1</div>
-          <h3>Adquirís EscalApp</h3>
-          <p>Comprás y recibís tu código único en tu email.</p>
+      <div class="steps-row reveal">
+        <div class="step-mini">
+          <span class="step-mini-num">1</span>
+          <span class="step-mini-text">Adquirís EscalApp</span>
         </div>
-        <div class="step-card reveal reveal-delay-1">
-          <div class="step-number">2</div>
-          <h3>Creás tu cuenta</h3>
-          <p>Usás tu código, iniciás sesión y configurás tu negocio en minutos.</p>
+        <span class="step-arrow">→</span>
+        <div class="step-mini">
+          <span class="step-mini-num">2</span>
+          <span class="step-mini-text">Creás tu cuenta</span>
         </div>
-        <div class="step-card reveal reveal-delay-2">
-          <div class="step-number">3</div>
-          <h3>Tu negocio automatizado desde el día 1</h3>
-          <p>El asistente IA trabaja por vos. Vos a vender y crecer.</p>
+        <span class="step-arrow">→</span>
+        <div class="step-mini">
+          <span class="step-mini-num">3</span>
+          <span class="step-mini-text">Automatizado desde el día 1</span>
         </div>
       </div>
     </div>
