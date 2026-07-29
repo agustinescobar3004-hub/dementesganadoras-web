@@ -323,6 +323,54 @@
   }
   .in-view .mock-chart-fill{opacity:1;}
 
+  .mock-benefits{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    margin-top:8px;
+    padding-top:8px;
+    border-top:1px solid rgb(255 255 255 / 0.06);
+  }
+  .mock-benefit{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    opacity:0;
+    transform:translateY(6px);
+  }
+  .mock-benefit-icon{
+    width:16px;height:16px;
+    border-radius:5px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    font-size:9px;
+    line-height:1;
+    background:rgb(0 229 255 / 0.1);
+    border:1px solid rgb(0 229 255 / 0.22);
+  }
+  .mock-benefit-text{
+    font-size:8.2px;
+    font-weight:700;
+    line-height:1.3;
+    color:var(--text);
+    letter-spacing:0.005em;
+  }
+  .mock-benefit--long .mock-benefit-text{
+    font-size:7.2px;
+    line-height:1.25;
+  }
+  .in-view .mock-benefit{animation:mock-benefit-in .5s cubic-bezier(.22,1,.36,1) forwards;}
+  .in-view .mock-benefit:nth-child(1){animation-delay:1s;}
+  .in-view .mock-benefit:nth-child(2){animation-delay:1.18s;}
+  .in-view .mock-benefit:nth-child(3){animation-delay:1.36s;}
+  .in-view .mock-benefit:nth-child(4){animation-delay:1.54s;}
+  @keyframes mock-benefit-in{
+    from{opacity:0;transform:translateY(6px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+
   .mock-input-bar{
     display:flex;
     align-items:center;
@@ -492,7 +540,7 @@
     border:1px solid var(--border);
     background:rgb(255 255 255 / 0.02);
     flex:1;
-    min-width:150px;
+    min-width:168px;
     flex-shrink:0;
     transition:border-color .3s ease;
   }
@@ -508,7 +556,7 @@
     flex-shrink:0;
     box-shadow:0 0 12px rgb(0 229 255 / 0.5);
   }
-  .step-mini-text{font-size:0.88rem;font-weight:700;letter-spacing:-0.005em;line-height:1.25;}
+  .step-mini-text{font-size:0.82rem;font-weight:700;letter-spacing:-0.005em;line-height:1.3;}
   .step-arrow{font-size:18px;color:var(--accent);flex-shrink:0;}
 
   /* ── Features (grid completo) ──────────────────────────── */
@@ -697,6 +745,12 @@
                 <path class="mock-chart-fill" fill="url(#mockChartFill)" d="M0,46 L22,40 L48,44 L74,28 L100,32 L126,18 L152,22 L178,10 L204,14 L220,4 L220,60 L0,60 Z"/>
                 <path class="mock-chart-line" pathLength="1" d="M0,46 L22,40 L48,44 L74,28 L100,32 L126,18 L152,22 L178,10 L204,14 L220,4"/>
               </svg>
+              <div class="mock-benefits">
+                <div class="mock-benefit"><span class="mock-benefit-icon" aria-hidden="true">🕒</span><span class="mock-benefit-text">Ahorrás 8+ horas por semana</span></div>
+                <div class="mock-benefit mock-benefit--long"><span class="mock-benefit-icon" aria-hidden="true">✍️</span><span class="mock-benefit-text">Anotá tus movimientos comerciales durante tu jornada, luego la IA te ordena la estructura de tu negocio</span></div>
+                <div class="mock-benefit"><span class="mock-benefit-icon" aria-hidden="true">💬</span><span class="mock-benefit-text">Un mensaje = ventas, stock y caja al día</span></div>
+                <div class="mock-benefit"><span class="mock-benefit-icon" aria-hidden="true">🤖</span><span class="mock-benefit-text">Tu asistente IA siempre está disponible para tu negocio</span></div>
+              </div>
             </div>
             <div class="mock-input-bar">
               <span class="mock-input-placeholder">Contale al asistente...</span>
@@ -750,12 +804,17 @@
         <span class="step-arrow">→</span>
         <div class="step-mini">
           <span class="step-mini-num">2</span>
-          <span class="step-mini-text">Creás tu cuenta</span>
+          <span class="step-mini-text">Creás tu cuenta 100% única y segura</span>
         </div>
         <span class="step-arrow">→</span>
         <div class="step-mini">
           <span class="step-mini-num">3</span>
-          <span class="step-mini-text">Automatizado desde el día 1</span>
+          <span class="step-mini-text">Acomodás la estructura de tu negocio en la app</span>
+        </div>
+        <span class="step-arrow">→</span>
+        <div class="step-mini">
+          <span class="step-mini-num">4</span>
+          <span class="step-mini-text">Tu negocio tiene la fluidez que necesita</span>
         </div>
       </div>
     </div>
