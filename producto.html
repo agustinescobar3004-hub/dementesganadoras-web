@@ -111,22 +111,26 @@
       var(--bg);
   }
   #producto-hero h1{
-    font-size:clamp(1.35rem, 6.1vw, 3.3rem);
+    font-size:clamp(0.9rem, 4.8vw, 3.3rem);
     font-weight:800;
     line-height:1.2;
     letter-spacing:-0.02em;
     max-width:820px;
     margin:0 auto 18px;
-    padding:0 20px;
+    padding:0 10px;
   }
-  #producto-hero h1 span{display:block;}
+  #producto-hero h1 span{display:block;white-space:nowrap;}
   #producto-hero h1 .c-white{color:#fff;font-weight:800;}
   #producto-hero h1 .c-cyan{color:var(--accent);font-weight:900;}
   #producto-hero h1 .grad{
     color:var(--green);
     font-weight:900;
   }
-  .hero-sub{max-width:640px;margin:0 auto;}
+  .hero-sub{
+    margin:0 auto;
+    text-align:center;
+    width:100%;
+  }
   .hero-sub-line1{
     display:block;
     font-size:clamp(1.05rem, 2.6vw, 1.4rem);
@@ -141,7 +145,7 @@
     color:var(--green);
     font-weight:800;
     font-style:italic;
-    font-size:clamp(0.85rem, 4.4vw, 1.4rem);
+    font-size:clamp(0.75rem, 3.6vw, 1.15rem);
     letter-spacing:-0.01em;
     line-height:1.3;
     white-space:nowrap;
@@ -839,13 +843,7 @@
           <div>
             <h3>App para celular</h3>
             <div class="feature-divider"></div>
-            <p>
-              Sin excusas.<br>
-              Instalala en tu celular en segundos.<br>
-              Tu negocio siempre en el bolsillo.
-              <br><br>
-              ✅ Disponible en todas las plataformas.
-            </p>
+            <p>Instalala en segundos. Tu negocio siempre en el bolsillo.</p>
           </div>
         </div>
         <div class="feature-card reveal reveal-delay-1">
@@ -853,13 +851,7 @@
           <div>
             <h3>Notas rápidas <span class="ia-badge">⚡ IA</span></h3>
             <div class="feature-divider"></div>
-            <p>
-              No siempre tenés el tiempo de cargar tus movimientos financieros/comerciales en el momento — estás trabajando.
-              <br><br>
-              Anotá tus movimientos comerciales en nuestra app durante tu jornada y al final, <strong>CON SOLO UN BOTÓN</strong>, se lo mandás a tu asistente IA.
-              <br><br>
-              Él interpreta todo y deja tu negocio ordenado y actualizado.
-            </p>
+            <p>Anotá tus movimientos durante el día. Con un botón, se lo mandás a tu asistente IA y él ordena todo.</p>
           </div>
         </div>
         <div class="feature-card reveal reveal-delay-2">
@@ -867,61 +859,7 @@
           <div>
             <h3>Asistente IA <span class="ia-badge">⚡ IA</span></h3>
             <div class="feature-divider"></div>
-            <p>
-              Le pasás tus movimientos financieros/comerciales basándote en la estructura de tu negocio, él los registra y te acomoda <strong>TODO</strong> solo.
-              <br><br>
-              Stock, ventas, compras, cobros, deudas.
-              <br><br>
-              Sin formularios, sin trabas, vos enfocado en crecer.
-            </p>
-          </div>
-        </div>
-        <div class="feature-card reveal reveal-delay-3">
-          <div class="feature-icon">📊</div>
-          <div>
-            <h3>Dashboard en tiempo real</h3>
-            <div class="feature-divider"></div>
-            <p>
-              Sabés exactamente dónde está parado tu negocio, cuánto ganás, cuánto vale tu stock, cuánto debés y te deben 🚀.
-              <br><br>
-              Sin calculadora, sin adivinar, sin esperar fin de mes.
-            </p>
-          </div>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon">📦</div>
-          <div>
-            <h3>Stock automático</h3>
-            <div class="feature-divider"></div>
-            <p>
-              Cada compra y venta actualiza tu inventario solo.
-              <br><br>
-              Siempre sabés cuántas unidades tenés y cuánto vale lo que tenés en stock.
-            </p>
-          </div>
-        </div>
-        <div class="feature-card reveal reveal-delay-1">
-          <div class="feature-icon">💰</div>
-          <div>
-            <h3>Control de caja</h3>
-            <div class="feature-divider"></div>
-            <p>
-              Tres balances en un solo lugar: dólares en efectivo, USDT y pesos.
-              <br><br>
-              Total claro, siempre actualizado.
-            </p>
-          </div>
-        </div>
-        <div class="feature-card reveal reveal-delay-2">
-          <div class="feature-icon">👥</div>
-          <div>
-            <h3>Clientes y proveedores</h3>
-            <div class="feature-divider"></div>
-            <p>
-              Historial completo de cada cliente y proveedor.
-              <br><br>
-              Deudores y deudas bajo control, con un solo vistazo.
-            </p>
+            <p>Tu asistente IA entiende tu negocio como es: le contás tus ventas, cobros, compras o gastos, y él solo actualiza stock, caja, clientes y reportes — en orden. Sin formularios, sin trabas, vos enfocado en crecer.</p>
           </div>
         </div>
         <div class="feature-card reveal reveal-delay-3">
@@ -929,13 +867,39 @@
           <div>
             <h3>Gastos recurrentes <span class="ia-badge">⚡ IA</span></h3>
             <div class="feature-divider"></div>
-            <p>
-              Cargás tus gastos fijos una sola vez.
-              <br><br>
-              Elegís fecha de inicio y vencimiento, y cada mes cuando llegue la fecha de pago se agregan solos a tus deudas.
-              <br><br>
-              ✅ Muy favorable para medir los gastos recurrentes del negocio.
-            </p>
+            <p>Cargá una sola vez los gastos fijos de tu negocio. Elegí fecha de inicio y vencimiento, y todos los meses lo vas a tener bien claro.</p>
+          </div>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">📊</div>
+          <div>
+            <h3>Dashboard en tiempo real</h3>
+            <div class="feature-divider"></div>
+            <p>Ganancia, stock, deudas y cobros — todo en un vistazo, sin calculadora.</p>
+          </div>
+        </div>
+        <div class="feature-card reveal reveal-delay-1">
+          <div class="feature-icon">📦</div>
+          <div>
+            <h3>Stock automático</h3>
+            <div class="feature-divider"></div>
+            <p>Cada venta o compra actualiza tu inventario solo.</p>
+          </div>
+        </div>
+        <div class="feature-card reveal reveal-delay-2">
+          <div class="feature-icon">💰</div>
+          <div>
+            <h3>Control de caja</h3>
+            <div class="feature-divider"></div>
+            <p>Dólares, USDT y pesos — los tres balances, siempre claros.</p>
+          </div>
+        </div>
+        <div class="feature-card reveal reveal-delay-3">
+          <div class="feature-icon">👥</div>
+          <div>
+            <h3>Clientes y proveedores</h3>
+            <div class="feature-divider"></div>
+            <p>Historial completo. Deudores y deudas, bajo control.</p>
           </div>
         </div>
       </div>

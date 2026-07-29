@@ -153,14 +153,14 @@
   @keyframes pulse-dot{0%,100%{opacity:1;}50%{opacity:0.4;}}
 
   h1.hero-title{
-    font-size:clamp(1.5rem, 6.4vw, 4.4rem);
+    font-size:clamp(0.95rem, 5vw, 4.4rem);
     font-weight:800;
     line-height:1.18;
     letter-spacing:-0.02em;
     margin-bottom:18px;
-    padding:0 20px;
+    padding:0 10px;
   }
-  h1.hero-title span{display:block;}
+  h1.hero-title span{display:block;white-space:nowrap;}
   h1.hero-title .c-white{color:#fff;font-weight:800;}
   h1.hero-title .c-cyan{color:var(--accent);font-weight:900;}
   h1.hero-title .grad{
@@ -200,8 +200,8 @@
     white-space:nowrap;
   }
   .hero-sub{
-    max-width:640px;
     margin:0 auto 40px;
+    text-align:center;
   }
   .hero-sub-line1{
     display:block;
@@ -217,7 +217,7 @@
     color:var(--green);
     font-weight:800;
     font-style:italic;
-    font-size:clamp(0.85rem, 4.4vw, 1.4rem);
+    font-size:clamp(0.75rem, 3.6vw, 1.15rem);
     letter-spacing:-0.01em;
     line-height:1.3;
     white-space:nowrap;
@@ -277,44 +277,74 @@
     gap:20px;
     margin-top:8px;
   }
-  .problem-card{
+  .flip-card{
     position:relative;
+    perspective:1200px;
+    cursor:pointer;
+    border-radius:20px;
+  }
+  .flip-card-inner{
+    position:relative;
+    min-height:205px;
+    transition:transform .6s cubic-bezier(.22,1,.36,1);
+    transform-style:preserve-3d;
+  }
+  .flip-card.is-flipped .flip-card-inner{transform:rotateY(180deg);}
+  .flip-card:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:20px;}
+  .flip-face{
+    position:absolute;
+    inset:0;
     padding:42px 28px 36px;
     border-radius:20px;
-    border:2px solid rgb(0 229 255 / 0.4);
-    background:linear-gradient(160deg, rgb(0 229 255 / 0.08), rgb(255 255 255 / 0.01));
-    box-shadow:0 0 0 1px rgb(0 229 255 / 0.05) inset, 0 24px 50px -24px rgb(0 229 255 / 0.35);
-    font-size:1.4rem;
-    font-weight:800;
-    line-height:1.32;
-    letter-spacing:-0.015em;
     overflow:hidden;
-    transition:transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease;
+    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+    transition:border-color .3s ease, box-shadow .3s ease;
   }
-  .problem-card.card-red{
-    border-color:rgb(255 77 106 / 0.45);
+  .flip-front{
+    border:2px solid rgb(255 77 106 / 0.45);
     background:linear-gradient(160deg, rgb(255 77 106 / 0.08), rgb(255 255 255 / 0.01));
     box-shadow:0 0 0 1px rgb(255 77 106 / 0.05) inset, 0 24px 50px -24px rgb(255 77 106 / 0.4);
   }
-  .problem-card:hover{
-    transform:translateY(-8px) scale(1.015);
-    box-shadow:0 0 0 1px rgb(0 229 255 / 0.1) inset, 0 30px 60px -24px rgb(0 229 255 / 0.5);
-  }
-  .problem-card.card-red:hover{
+  .flip-card:hover .flip-front{
     box-shadow:0 0 0 1px rgb(255 77 106 / 0.12) inset, 0 30px 60px -24px rgb(255 77 106 / 0.55);
   }
-  .problem-card .q-mark{
+  .flip-back{
+    border:2px solid rgb(0 201 122 / 0.5);
+    background:linear-gradient(160deg, rgb(0 201 122 / 0.12), rgb(255 255 255 / 0.01));
+    box-shadow:0 0 0 1px rgb(0 201 122 / 0.08) inset, 0 24px 50px -24px rgb(0 201 122 / 0.45);
+    transform:rotateY(180deg);
+  }
+  .q-mark,.a-mark{
     position:absolute;
     top:-22px;right:-4px;
     font-size:7.5rem;
     font-weight:900;
     line-height:1;
-    color:rgb(0 229 255 / 0.16);
     z-index:0;
     pointer-events:none;
   }
-  .problem-card.card-red .q-mark{color:rgb(255 77 106 / 0.2);}
-  .problem-card .q-text{position:relative;z-index:1;display:block;}
+  .q-mark{color:rgb(255 77 106 / 0.2);}
+  .a-mark{color:rgb(0 201 122 / 0.22);}
+  .q-text,.a-text{
+    position:relative;
+    z-index:1;
+    display:block;
+    font-size:1.4rem;
+    font-weight:800;
+    line-height:1.32;
+    letter-spacing:-0.015em;
+  }
+  .a-text{font-size:1.15rem;color:#eafff5;}
+  .flip-hint{
+    position:absolute;
+    bottom:14px;right:18px;
+    z-index:1;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.02em;
+    color:rgb(255 255 255 / 0.4);
+  }
   .problema-close{
     text-align:center;
     max-width:680px;
@@ -453,17 +483,177 @@
     align-items:center;
     justify-content:center;
   }
-  .mini-phone-bar{
-    width:80%;height:5px;
-    border-radius:3px;
+  /* ── Mini-animaciones de características ────────────────── */
+  .fmini{
+    margin-top:16px;
+    padding:12px 14px;
+    border-radius:12px;
+    background:rgb(255 255 255 / 0.02);
+    border:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .fmini-chip{
+    font-size:9.5px;
+    font-weight:800;
+    padding:4px 9px;
+    border-radius:999px;
+    color:var(--green);
+    background:rgb(0 201 122 / 0.12);
+    border:1px solid rgb(0 201 122 / 0.3);
+    opacity:0;
+    transform:translateY(6px);
+    transition:opacity .35s ease, transform .35s cubic-bezier(.22,1,.36,1);
+  }
+  .in-view .fmini-chip{opacity:1;transform:translateY(0);}
+
+  .fmini-install-track{position:relative;width:44px;height:4px;border-radius:2px;background:rgb(255 255 255 / 0.1);overflow:hidden;flex-shrink:0;}
+  .fmini-install-bar{
+    position:absolute;top:0;left:0;
+    width:100%;height:100%;
+    border-radius:2px;
     background:linear-gradient(90deg, var(--accent), var(--green));
-    opacity:0.85;
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform 1.1s cubic-bezier(.22,1,.36,1) .2s;
   }
-  .mini-phone-dot{
-    width:18px;height:18px;border-radius:50%;
-    background:rgb(0 229 255 / 0.2);
+  .in-view .fmini-install-bar{transform:scaleX(1);}
+  .fmini-install-check{
+    font-size:16px;font-weight:900;color:var(--green);
+    opacity:0;transform:scale(.5);flex-shrink:0;
+    transition:opacity .3s ease 1.3s, transform .3s cubic-bezier(.34,1.56,.64,1) 1.3s;
+  }
+  .in-view .fmini-install-check{opacity:1;transform:scale(1);}
+
+  .fmini-notes{flex-direction:column;align-items:stretch;}
+  .fmini-notes-lines{display:flex;flex-direction:column;gap:5px;}
+  .fmini-note-line{
+    font-size:10.5px;
+    font-weight:600;
+    color:var(--text);
+    background:rgb(255 255 255 / 0.04);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:6px 10px;
+    opacity:0;
+    transform:translateY(6px);
+    transition:opacity .4s ease, transform .4s cubic-bezier(.22,1,.36,1);
+  }
+  .in-view .fmini-note-line:nth-child(1){transition-delay:.1s;}
+  .in-view .fmini-note-line:nth-child(2){transition-delay:.4s;}
+  .in-view .fmini-note-line:nth-child(3){transition-delay:.7s;}
+  .in-view .fmini-note-line{opacity:1;transform:translateY(0);}
+  .fmini-notes-send{
+    align-self:center;
+    margin-top:6px;
+    font-size:10px;
+    font-weight:800;
+    color:#06070b;
+    background:var(--accent);
+    padding:6px 14px;
+    border-radius:999px;
+    opacity:0;
+    transform:scale(.85);
+    transition:opacity .3s ease 1.05s, transform .3s cubic-bezier(.34,1.56,.64,1) 1.05s;
+  }
+  .in-view .fmini-notes-send{opacity:1;transform:scale(1);}
+  .fmini-notes-results{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-top:6px;}
+  .fmini-notes-results .fmini-chip:nth-child(1){transition-delay:1.35s;}
+  .fmini-notes-results .fmini-chip:nth-child(2){transition-delay:1.55s;}
+  .fmini-notes-results .fmini-chip:nth-child(3){transition-delay:1.75s;}
+  .fmini-notes-results--wide .fmini-chip:nth-child(1){transition-delay:1s;}
+  .fmini-notes-results--wide .fmini-chip:nth-child(2){transition-delay:1.2s;}
+  .fmini-notes-results--wide .fmini-chip:nth-child(3){transition-delay:1.4s;}
+  .fmini-notes-results--wide .fmini-chip:nth-child(4){transition-delay:1.6s;}
+
+  .fmini-cal-box{
+    position:relative;
+    width:32px;height:32px;
+    border-radius:8px;
+    border:1.5px solid rgb(0 229 255 / 0.35);
+    background:rgb(0 229 255 / 0.06);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .fmini-cal-day{font-size:12px;font-weight:800;color:var(--accent);position:relative;z-index:1;}
+  .fmini-cal-day::after{
+    content:'';
+    position:absolute;
+    inset:-6px;
+    border-radius:50%;
     border:1.5px solid var(--accent);
+    opacity:0;
+    transform:scale(.6);
   }
+  .in-view .fmini-cal-day::after{animation:fmini-cal-pulse 1.8s ease-out .2s infinite;}
+  @keyframes fmini-cal-pulse{
+    0%{opacity:.7;transform:scale(.6);}
+    100%{opacity:0;transform:scale(1.8);}
+  }
+  .fmini-cal-arrow{font-size:14px;color:var(--muted);flex-shrink:0;}
+
+  .fmini-dash{gap:14px;}
+  .fmini-dash-info{display:flex;flex-direction:column;gap:2px;flex-shrink:0;}
+  .fmini-dash-value{font-size:18px;font-weight:800;color:#fff;letter-spacing:-0.01em;font-variant-numeric:tabular-nums;}
+  .fmini-dash-label{font-size:9px;font-weight:700;color:var(--muted);letter-spacing:0.02em;text-transform:uppercase;}
+  .fmini-dash-chart{flex:1;height:32px;display:block;}
+  .fmini-dash-line{
+    fill:none;
+    stroke:var(--accent);
+    stroke-width:2.5;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-dasharray:1;
+    stroke-dashoffset:1;
+    transition:stroke-dashoffset 1.3s cubic-bezier(.22,1,.36,1) .2s;
+  }
+  .in-view .fmini-dash-line{stroke-dashoffset:0;}
+
+  .fmini-swap{position:relative;overflow:hidden;flex-shrink:0;}
+  .fmini-swap-old,.fmini-swap-new{
+    position:absolute;inset:0;
+    display:flex;align-items:center;
+    font-weight:800;
+    font-variant-numeric:tabular-nums;
+    transition:opacity .4s ease, transform .4s cubic-bezier(.22,1,.36,1);
+  }
+  .fmini-swap-old{opacity:1;transform:translateY(0);transition-delay:1s;}
+  .in-view .fmini-swap-old{opacity:0;transform:translateY(-14px);}
+  .fmini-swap-new{opacity:0;transform:translateY(14px);transition-delay:1.1s;}
+  .in-view .fmini-swap-new{opacity:1;transform:translateY(0);}
+
+  .fmini-stock-label{font-size:11px;font-weight:700;color:var(--muted);}
+  .fmini-stock-swap{width:30px;height:22px;justify-content:center;font-size:17px;color:var(--text);}
+  .fmini-stock-swap .fmini-swap-new{color:var(--green);justify-content:center;}
+  .fmini-stock-unit{font-size:11px;font-weight:700;color:var(--muted);}
+  .fmini-stock-swap::after{
+    content:'';
+    position:absolute;inset:-5px;
+    border-radius:6px;
+    background:rgb(0 201 122 / 0.25);
+    opacity:0;
+    pointer-events:none;
+  }
+  .in-view .fmini-stock-swap::after{animation:fmini-flash .5s ease-out 1.05s;}
+  @keyframes fmini-flash{0%{opacity:.8;}100%{opacity:0;}}
+
+  .fmini-caja{gap:8px;flex-wrap:wrap;justify-content:center;}
+  .fmini-caja-chip{
+    display:flex;align-items:baseline;gap:4px;
+    padding:6px 11px;
+    border-radius:999px;
+    background:rgb(0 229 255 / 0.08);
+    border:1px solid rgb(0 229 255 / 0.22);
+  }
+  .fmini-caja-val{font-size:13px;font-weight:800;color:#fff;font-variant-numeric:tabular-nums;}
+  .fmini-caja-cur{font-size:8.5px;font-weight:700;color:var(--muted);letter-spacing:0.02em;}
+
+  .fmini-client{justify-content:space-between;}
+  .fmini-client-name{font-size:11.5px;font-weight:700;color:var(--text);}
+  .fmini-client-debt{width:56px;height:20px;justify-content:flex-end;font-size:12px;}
+  .fmini-client-debt .fmini-swap-old{color:#ff4d6a;justify-content:flex-end;}
+  .fmini-client-debt .fmini-swap-new{color:var(--green);justify-content:flex-end;}
 
   /* ── Sección IA ─────────────────────────────────────────── */
   #seccion-ia .head{text-align:center;max-width:680px;margin:0 auto 48px;}
@@ -603,25 +793,70 @@
         <h2>¿Te pasa alguna de estas situaciones?</h2>
       </div>
       <div class="cards">
-        <div class="problem-card card-red reveal">
-          <span class="q-mark">?</span>
-          <span class="q-text">¿No sabés cuánto ganaste este mes?</span>
+        <div class="flip-card reveal" tabindex="0" role="button" aria-pressed="false">
+          <div class="flip-card-inner">
+            <div class="flip-face flip-front">
+              <span class="q-mark">?</span>
+              <span class="q-text">¿No sabés cuánto ganaste este mes?</span>
+              <span class="flip-hint">Tocá para ver la solución →</span>
+            </div>
+            <div class="flip-face flip-back">
+              <span class="a-mark">✓</span>
+              <span class="a-text">Tu dashboard te muestra la ganancia real, actualizada al instante.</span>
+            </div>
+          </div>
         </div>
-        <div class="problem-card card-red reveal reveal-delay-1">
-          <span class="q-mark">?</span>
-          <span class="q-text">¿Tenés clientes que te deben plata?</span>
+        <div class="flip-card reveal reveal-delay-1" tabindex="0" role="button" aria-pressed="false">
+          <div class="flip-card-inner">
+            <div class="flip-face flip-front">
+              <span class="q-mark">?</span>
+              <span class="q-text">¿Tenés clientes que te deben plata?</span>
+              <span class="flip-hint">Tocá para ver la solución →</span>
+            </div>
+            <div class="flip-face flip-back">
+              <span class="a-mark">✓</span>
+              <span class="a-text">Control de deudores: quién te debe y cuánto, de un vistazo.</span>
+            </div>
+          </div>
         </div>
-        <div class="problem-card card-red reveal reveal-delay-2">
-          <span class="q-mark">?</span>
-          <span class="q-text">Tu stock nunca coincide con lo que tenés</span>
+        <div class="flip-card reveal reveal-delay-2" tabindex="0" role="button" aria-pressed="false">
+          <div class="flip-card-inner">
+            <div class="flip-face flip-front">
+              <span class="q-mark">?</span>
+              <span class="q-text">Tu stock nunca coincide con lo que tenés</span>
+              <span class="flip-hint">Tocá para ver la solución →</span>
+            </div>
+            <div class="flip-face flip-back">
+              <span class="a-mark">✓</span>
+              <span class="a-text">Stock automático: cada venta o compra lo actualiza solo, sin errores.</span>
+            </div>
+          </div>
         </div>
-        <div class="problem-card card-red reveal reveal-delay-3">
-          <span class="q-mark">?</span>
-          <span class="q-text">Perdés tiempo haciendo cuentas a mano</span>
+        <div class="flip-card reveal reveal-delay-3" tabindex="0" role="button" aria-pressed="false">
+          <div class="flip-card-inner">
+            <div class="flip-face flip-front">
+              <span class="q-mark">?</span>
+              <span class="q-text">Perdés tiempo haciendo cuentas a mano</span>
+              <span class="flip-hint">Tocá para ver la solución →</span>
+            </div>
+            <div class="flip-face flip-back">
+              <span class="a-mark">✓</span>
+              <span class="a-text">Le contás tus movimientos a tu asistente IA y te acomoda y actualiza tu negocio en tiempo real.</span>
+            </div>
+          </div>
         </div>
-        <div class="problem-card card-red reveal">
-          <span class="q-mark">?</span>
-          <span class="q-text">¿No sabés qué productos te dejan más ganancia?</span>
+        <div class="flip-card reveal" tabindex="0" role="button" aria-pressed="false">
+          <div class="flip-card-inner">
+            <div class="flip-face flip-front">
+              <span class="q-mark">?</span>
+              <span class="q-text">¿No sabés qué productos te dejan más ganancia?</span>
+              <span class="flip-hint">Tocá para ver la solución →</span>
+            </div>
+            <div class="flip-face flip-back">
+              <span class="a-mark">✓</span>
+              <span class="a-text">Reportes que te muestran tus productos más rentables, sin planillas.</span>
+            </div>
+          </div>
         </div>
       </div>
       <p class="problema-close reveal reveal-delay-1">Si te identificaste con alguna, es momento de administrar tu negocio de forma inteligente.</p>
@@ -674,18 +909,12 @@
           </div>
           <h3>App para celular</h3>
           <div class="feature-divider"></div>
-          <p style="font-size:1.12rem;letter-spacing:0.01em;">
-            Sin excusas.<br>
-            Instalala en tu celular en segundos.<br>
-            Tu negocio siempre en el bolsillo.
-            <br><br>
-            ✅ Disponible en todas las plataformas.
-          </p>
+          <p>Instalala en segundos. Tu negocio siempre en el bolsillo.</p>
           <div class="mini-phone">
             <div class="mini-phone-screen">
-              <div class="mini-phone-bar"></div>
-              <div class="mini-phone-bar" style="width:60%"></div>
-              <div class="mini-phone-dot"></div>
+              <img src="icon-192x192.png" alt="" style="width:26px;height:26px;border-radius:7px;object-fit:cover;" />
+              <div class="fmini-install-track"><div class="fmini-install-bar"></div></div>
+              <span class="fmini-install-check">✓</span>
             </div>
           </div>
         </div>
@@ -693,79 +922,103 @@
           <div class="feature-icon">📝</div>
           <h3>Notas rápidas <span class="ia-badge">⚡ IA</span></h3>
           <div class="feature-divider"></div>
-          <p>
-            No siempre tenés el tiempo de cargar tus movimientos financieros/comerciales en el momento — estás trabajando.
-            <br><br>
-            Anotá tus movimientos comerciales en nuestra app durante tu jornada y al final, <strong>CON SOLO UN BOTÓN</strong>, se lo mandás a tu asistente IA.
-            <br><br>
-            Él interpreta todo y deja tu negocio ordenado y actualizado.
-          </p>
+          <p>Anotá tus movimientos durante el día. Con un botón, se lo mandás a tu asistente IA y él ordena todo.</p>
+          <div class="fmini fmini-notes">
+            <div class="fmini-notes-lines">
+              <span class="fmini-note-line">Vendí 5 televisores a Juan en $500 USD c/u</span>
+              <span class="fmini-note-line">Federico me pagó su deuda de $300 USD</span>
+              <span class="fmini-note-line">Compré 100 remeras térmicas a $5 USD c/u</span>
+            </div>
+            <span class="fmini-notes-send">Enviar a asistente IA →</span>
+            <div class="fmini-notes-results">
+              <span class="fmini-chip">✅ Venta</span>
+              <span class="fmini-chip">✅ Cobro</span>
+              <span class="fmini-chip">✅ Stock</span>
+            </div>
+          </div>
         </div>
         <div class="feature-card reveal reveal-delay-2">
           <div class="feature-icon">🤖</div>
           <h3>Asistente IA <span class="ia-badge">⚡ IA</span></h3>
           <div class="feature-divider"></div>
-          <p>
-            Le escribís los movimientos financieros/comerciales basándote en la estructura de tu negocio, él los registra todos solo.
-            <br><br>
-            Ventas, compras, cobros, deudas — sin formularios, sin pasos extra.
-            <br><br>
-            <strong>VOS ENFOCADO EN CRECER.</strong>
-          </p>
-        </div>
-        <div class="feature-card reveal reveal-delay-3">
-          <div class="feature-icon">📊</div>
-          <h3>Dashboard en tiempo real</h3>
-          <div class="feature-divider"></div>
-          <p>
-            Sabés exactamente dónde está parado tu negocio, cuánto ganás, cuánto vale tu stock y cómo va tu negocio.
-            <br><br>
-            Sin calculadora, sin adivinar, sin perder tiempo.
-            <br><br>
-            <strong>TODO ORDENADO.</strong>
-          </p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon">📦</div>
-          <h3>Stock automático</h3>
-          <div class="feature-divider"></div>
-          <p>
-            Cada compra y venta actualiza tu inventario solo.
-            <br><br>
-            Siempre sabés cuántas unidades tenés y cuánto vale lo que tenés en stock.
-          </p>
-        </div>
-        <div class="feature-card reveal reveal-delay-1">
-          <div class="feature-icon">💰</div>
-          <h3>Control de caja</h3>
-          <div class="feature-divider"></div>
-          <p>
-            Tres balances en un solo lugar: dólares en efectivo, USDT y pesos.
-            <br><br>
-            Total claro, siempre actualizado.
-          </p>
-        </div>
-        <div class="feature-card reveal reveal-delay-2">
-          <div class="feature-icon">👥</div>
-          <h3>Clientes y proveedores</h3>
-          <div class="feature-divider"></div>
-          <p>
-            Historial completo de cada cliente y proveedor.
-            <br><br>
-            Deudores y deudas bajo control, con un solo vistazo.
-          </p>
+          <p>Tu asistente IA entiende tu negocio como es: le contás tus ventas, cobros, compras o gastos, y él solo actualiza stock, caja, clientes y reportes — en orden. Sin formularios, sin trabas, vos enfocado en crecer.</p>
+          <div class="fmini fmini-notes">
+            <div class="fmini-notes-lines">
+              <span class="fmini-note-line">Vendí 5 televisores a Juan en $500 USD c/u</span>
+              <span class="fmini-note-line">Federico me pagó su deuda de $300 USD</span>
+              <span class="fmini-note-line">Compré 100 remeras térmicas a $5 USD c/u</span>
+            </div>
+            <div class="fmini-notes-results fmini-notes-results--wide">
+              <span class="fmini-chip">📦 Stock -5</span>
+              <span class="fmini-chip">💰 Caja +$2.500</span>
+              <span class="fmini-chip">👤 Juan actualizado</span>
+              <span class="fmini-chip">📊 Reporte del día</span>
+            </div>
+          </div>
         </div>
         <div class="feature-card reveal reveal-delay-3">
           <div class="feature-icon">🔁</div>
           <h3>Gastos recurrentes <span class="ia-badge">⚡ IA</span></h3>
           <div class="feature-divider"></div>
-          <p>
-            Cargás tus gastos fijos una sola vez.
-            <br><br>
-            Elegís fecha de inicio y vencimiento, y cada mes cuando llegue la fecha de pago se agregan solos a tus deudas.
-            <br><br>
-            ✅ Muy favorable para medir los gastos recurrentes del negocio.
-          </p>
+          <p>Cargá una sola vez los gastos fijos de tu negocio. Elegí fecha de inicio y vencimiento, y todos los meses lo vas a tener bien claro.</p>
+          <div class="fmini">
+            <div class="fmini-cal-box"><span class="fmini-cal-day">15</span></div>
+            <span class="fmini-cal-arrow">→</span>
+            <span class="fmini-chip">💸 Alquiler agregado a deudas</span>
+          </div>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">📊</div>
+          <h3>Dashboard en tiempo real</h3>
+          <div class="feature-divider"></div>
+          <p>Ganancia, stock, deudas y cobros — todo en un vistazo, sin calculadora.</p>
+          <div class="fmini fmini-dash">
+            <div class="fmini-dash-info">
+              <span class="fmini-dash-value" data-count-to="18400">$0</span>
+              <span class="fmini-dash-label">Ganancia del mes</span>
+            </div>
+            <svg class="fmini-dash-chart" viewBox="0 0 100 30" preserveAspectRatio="none" aria-hidden="true">
+              <path class="fmini-dash-line" pathLength="1" d="M0,24 L15,20 L30,22 L45,12 L60,15 L75,6 L100,3"/>
+            </svg>
+          </div>
+        </div>
+        <div class="feature-card reveal reveal-delay-1">
+          <div class="feature-icon">📦</div>
+          <h3>Stock automático</h3>
+          <div class="feature-divider"></div>
+          <p>Cada venta o compra actualiza tu inventario solo.</p>
+          <div class="fmini">
+            <span class="fmini-stock-label">Stock disponible</span>
+            <span class="fmini-swap fmini-stock-swap">
+              <span class="fmini-swap-old">17</span>
+              <span class="fmini-swap-new">16</span>
+            </span>
+            <span class="fmini-stock-unit">u.</span>
+          </div>
+        </div>
+        <div class="feature-card reveal reveal-delay-2">
+          <div class="feature-icon">💰</div>
+          <h3>Control de caja</h3>
+          <div class="feature-divider"></div>
+          <p>Dólares, USDT y pesos — los tres balances, siempre claros.</p>
+          <div class="fmini fmini-caja">
+            <span class="fmini-caja-chip"><span class="fmini-caja-val" data-count-to="1200">$0</span><span class="fmini-caja-cur">USD</span></span>
+            <span class="fmini-caja-chip"><span class="fmini-caja-val" data-count-to="850">$0</span><span class="fmini-caja-cur">USDT</span></span>
+            <span class="fmini-caja-chip"><span class="fmini-caja-val" data-count-to="95000">$0</span><span class="fmini-caja-cur">ARS</span></span>
+          </div>
+        </div>
+        <div class="feature-card reveal reveal-delay-3">
+          <div class="feature-icon">👥</div>
+          <h3>Clientes y proveedores</h3>
+          <div class="feature-divider"></div>
+          <p>Historial completo. Deudores y deudas, bajo control.</p>
+          <div class="fmini fmini-client">
+            <span class="fmini-client-name">👤 Federico</span>
+            <span class="fmini-swap fmini-client-debt">
+              <span class="fmini-swap-old">$300</span>
+              <span class="fmini-swap-new">$0 ✓</span>
+            </span>
+          </div>
         </div>
       </div>
       <div class="cta-wrap reveal">
@@ -852,6 +1105,22 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  // ── Flip cards de "¿Te pasa alguna de estas...?" ────────────
+  var flipCards = document.querySelectorAll('.flip-card');
+  flipCards.forEach(function(card){
+    var toggle = function(){
+      var flipped = card.classList.toggle('is-flipped');
+      card.setAttribute('aria-pressed', flipped ? 'true' : 'false');
+    };
+    card.addEventListener('click', toggle);
+    card.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+        e.preventDefault();
+        toggle();
+      }
+    });
+  });
+
   // ── Reveal on scroll ───────────────────────────────────────
   var revealEls = document.querySelectorAll('.reveal:not(.in-view)');
   if ('IntersectionObserver' in window) {
@@ -868,9 +1137,42 @@
     revealEls.forEach(function(el){ el.classList.add('in-view'); });
   }
 
+  // ── Count-up de los valores en las mini-animaciones ─────────
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function formatARS(n){ return '$' + Math.round(n).toLocaleString('es-AR'); }
+  function animateCount(el){
+    var target = parseInt(el.getAttribute('data-count-to'), 10) || 0;
+    if (prefersReducedMotion) { el.textContent = formatARS(target); return; }
+    var duration = 1200;
+    var start = null;
+    function step(ts){
+      if (!start) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = formatARS(target * eased);
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var countEls = document.querySelectorAll('[data-count-to]');
+  if (countEls.length) {
+    if ('IntersectionObserver' in window) {
+      var countIO = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting) {
+            animateCount(entry.target);
+            countIO.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.4 });
+      countEls.forEach(function(el){ countIO.observe(el); });
+    } else {
+      countEls.forEach(function(el){ animateCount(el); });
+    }
+  }
+
   // ── Partículas flotantes en el hero ────────────────────────
   var particlesContainer = document.getElementById('particles');
-  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (particlesContainer && !prefersReducedMotion) {
     var COUNT = window.innerWidth < 640 ? 16 : 30;
     var colors = ['#00e5ff', '#00c97a'];
