@@ -183,7 +183,12 @@
   }
 
   /* ── Mockup de EscalApp ─────────────────────────────────── */
-  #mockup-showcase{padding:20px 24px 100px;}
+  #mockup-showcase{
+    padding:20px 24px 100px;
+    background:
+      radial-gradient(ellipse 55% 45% at 50% 12%, rgb(0 229 255 / 0.10), transparent 65%),
+      linear-gradient(180deg, #090b12 0%, #0c0e16 45%, var(--bg) 100%);
+  }
   .phone-mockup-wrap{
     position:relative;
     max-width:340px;
@@ -200,8 +205,15 @@
     padding:14px;
     box-shadow:
       0 0 0 2px rgb(255 255 255 / 0.07),
-      0 50px 90px -30px rgb(0 229 255 / 0.3),
+      0 0 60px 6px rgb(0 229 255 / 0.16),
+      0 50px 100px -30px rgb(0 229 255 / 0.32),
       0 25px 60px rgba(0,0,0,0.6);
+    animation:phone-float 6s ease-in-out infinite;
+    will-change:transform;
+  }
+  @keyframes phone-float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
   }
   .phone-notch{
     position:absolute;
@@ -229,88 +241,87 @@
   .mock-header{display:flex;align-items:center;gap:7px;margin-bottom:2px;}
   .mock-logo-img{width:18px;height:18px;border-radius:5px;flex-shrink:0;object-fit:cover;}
   .mock-title{font-size:13px;font-weight:800;color:var(--text);letter-spacing:-0.01em;}
-  .mock-ai-dot{
-    margin-left:auto;
-    width:7px;height:7px;border-radius:50%;
-    background:var(--green);
-    box-shadow:0 0 8px var(--green);
-    animation:mock-pulse 1.6s ease-in-out infinite;
-  }
-  @keyframes mock-pulse{0%,100%{opacity:1;}50%{opacity:0.35;}}
-
-  .mock-processing{
-    border-radius:13px;
-    border:1px solid rgb(0 229 255 / 0.25);
-    background:linear-gradient(135deg, rgb(0 229 255 / 0.14), rgb(0 229 255 / 0.04));
-    padding:10px 12px;
-    color:#fff;
-    font-size:9.5px;
-    font-weight:600;
-    line-height:1.4;
-  }
-  .mock-cursor{
-    display:inline-block;
-    margin-left:2px;
-    color:var(--accent);
-    font-weight:800;
-    animation:cursor-blink 1s steps(1) infinite;
-  }
-  @keyframes cursor-blink{0%,50%{opacity:1;}50.01%,100%{opacity:0;}}
-  .mock-progress-track{
+  .mock-ai-chip{
     position:relative;
-    width:100%;height:4px;
-    border-radius:2px;
-    background:rgb(255 255 255 / 0.1);
-    overflow:hidden;
-    margin-top:8px;
+    margin-left:auto;
+    display:flex;
+    align-items:center;
+    gap:5px;
+    padding:3px 8px 3px 6px;
+    border-radius:999px;
+    background:rgb(0 229 255 / 0.1);
+    border:1px solid rgb(0 229 255 / 0.25);
+    font-size:7.5px;
+    font-weight:800;
+    letter-spacing:0.02em;
+    color:var(--accent);
+    white-space:nowrap;
   }
-  .mock-progress-bar{
-    position:absolute;top:0;left:-40%;height:100%;width:40%;
-    border-radius:2px;
-    background:linear-gradient(90deg, var(--accent), var(--green));
-    box-shadow:0 0 8px rgb(0 229 255 / 0.6);
+  .mock-ai-dot{
+    position:relative;
+    width:6px;height:6px;border-radius:50%;
+    background:var(--green);
+    box-shadow:0 0 6px var(--green);
+    flex-shrink:0;
   }
-  .in-view .mock-progress-bar{animation:progress-slide 1.6s ease-in-out infinite;}
-  @keyframes progress-slide{
-    0%{left:-40%;}
-    100%{left:100%;}
+  .mock-ai-halo{
+    position:absolute;
+    left:6px;top:50%;
+    width:6px;height:6px;
+    margin-top:-3px;
+    border-radius:50%;
+    background:var(--green);
+    animation:ai-halo-pulse 2.2s ease-out infinite;
+    pointer-events:none;
+  }
+  @keyframes ai-halo-pulse{
+    0%{transform:scale(1);opacity:0.55;}
+    100%{transform:scale(3.4);opacity:0;}
   }
 
-  .mock-results{display:flex;flex-direction:column;gap:4px;flex:1;overflow:hidden;}
-  .mock-result-card{
-    display:flex;align-items:center;gap:5px;
-    padding:5px 9px;
-    border-radius:9px;
-    border:1px solid rgb(0 201 122 / 0.28);
-    background:rgb(0 201 122 / 0.1);
-    color:var(--text);
-    font-size:8.5px;
+  .mock-dashboard{
+    border-radius:14px;
+    border:1px solid rgb(0 229 255 / 0.18);
+    background:linear-gradient(160deg, rgb(0 229 255 / 0.08), rgb(255 255 255 / 0.02));
+    padding:12px 12px 8px;
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+  }
+  .mock-dash-label{
+    font-size:8px;
     font-weight:700;
+    color:var(--muted);
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+  }
+  .mock-dash-value-row{display:flex;align-items:baseline;gap:8px;}
+  .mock-dash-value{
+    font-size:19px;
+    font-weight:800;
+    color:#fff;
+    letter-spacing:-0.01em;
+    font-variant-numeric:tabular-nums;
+  }
+  .mock-dash-trend{font-size:9.5px;font-weight:800;color:var(--green);}
+  .mock-chart{width:100%;height:44px;margin-top:4px;display:block;}
+  .mock-chart-line{
+    fill:none;
+    stroke:var(--accent);
+    stroke-width:2.5;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-dasharray:1;
+    stroke-dashoffset:1;
+    filter:drop-shadow(0 0 4px rgb(0 229 255 / 0.55));
+    transition:stroke-dashoffset 1.6s cubic-bezier(.22,1,.36,1) .3s;
+  }
+  .in-view .mock-chart-line{stroke-dashoffset:0;}
+  .mock-chart-fill{
     opacity:0;
-    transform:translateY(6px);
+    transition:opacity 1s ease .9s;
   }
-  .mock-result-card .mr-check{font-size:9px;flex-shrink:0;}
-  .in-view .mock-result-card{animation:card-appear .5s cubic-bezier(.22,1,.36,1) forwards;}
-  .in-view .mock-result-card:nth-child(1){animation-delay:.5s;}
-  .in-view .mock-result-card:nth-child(2){animation-delay:1s;}
-  .in-view .mock-result-card:nth-child(3){animation-delay:1.5s;}
-  .in-view .mock-result-card:nth-child(4){animation-delay:2s;}
-  @keyframes card-appear{
-    from{opacity:0;transform:translateY(6px);}
-    to{opacity:1;transform:translateY(0);}
-  }
-  .mock-final-msg{
-    text-align:center;
-    font-size:8.5px;
-    font-weight:700;
-    color:var(--accent);
-    margin-top:4px;
-    opacity:0;
-  }
-  .in-view .mock-final-msg{
-    animation:card-appear .5s cubic-bezier(.22,1,.36,1) forwards;
-    animation-delay:2.5s;
-  }
+  .in-view .mock-chart-fill{opacity:1;}
 
   .mock-input-bar{
     display:flex;
@@ -663,19 +674,29 @@
           <div class="phone-screen">
             <div class="mock-header">
               <img src="icon-192x192.png" alt="EscalApp" class="mock-logo-img" />
-              <span class="mock-title">⚡ EscalApp IA</span>
-              <span class="mock-ai-dot"></span>
+              <span class="mock-title">EscalApp</span>
+              <span class="mock-ai-chip">
+                <span class="mock-ai-halo" aria-hidden="true"></span>
+                <span class="mock-ai-dot"></span>
+                IA activa
+              </span>
             </div>
-            <div class="mock-processing">
-              Procesando 15 movimientos del día<span class="mock-cursor">|</span>
-              <div class="mock-progress-track"><div class="mock-progress-bar"></div></div>
-            </div>
-            <div class="mock-results">
-              <div class="mock-result-card"><span class="mr-check">✅</span>Venta registrada — $900</div>
-              <div class="mock-result-card"><span class="mr-check">✅</span>Stock actualizado — 17 unidades</div>
-              <div class="mock-result-card"><span class="mr-check">✅</span>Deudor agregado — Lucas $800</div>
-              <div class="mock-result-card"><span class="mr-check">✅</span>Ganancia del día — $500</div>
-              <div class="mock-final-msg">✨ 15 movimientos procesados en 1 solo mensaje</div>
+            <div class="mock-dashboard">
+              <span class="mock-dash-label">Ventas de hoy</span>
+              <div class="mock-dash-value-row">
+                <span class="mock-dash-value" data-count-to="48320">$0</span>
+                <span class="mock-dash-trend">▲ 18%</span>
+              </div>
+              <svg class="mock-chart" viewBox="0 0 220 60" preserveAspectRatio="none" aria-hidden="true">
+                <defs>
+                  <linearGradient id="mockChartFill" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.35"/>
+                    <stop offset="100%" stop-color="#00e5ff" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <path class="mock-chart-fill" fill="url(#mockChartFill)" d="M0,46 L22,40 L48,44 L74,28 L100,32 L126,18 L152,22 L178,10 L204,14 L220,4 L220,60 L0,60 Z"/>
+                <path class="mock-chart-line" pathLength="1" d="M0,46 L22,40 L48,44 L74,28 L100,32 L126,18 L152,22 L178,10 L204,14 L220,4"/>
+              </svg>
             </div>
             <div class="mock-input-bar">
               <span class="mock-input-placeholder">Contale al asistente...</span>
@@ -889,6 +910,40 @@
     revealEls.forEach(function(el){ io.observe(el); });
   } else {
     revealEls.forEach(function(el){ el.classList.add('in-view'); });
+  }
+
+  // ── Count-up del número de ventas en el mockup ─────────────
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function formatARS(n){ return '$' + Math.round(n).toLocaleString('es-AR'); }
+  function animateCount(el){
+    var target = parseInt(el.getAttribute('data-count-to'), 10) || 0;
+    if (prefersReducedMotion) { el.textContent = formatARS(target); return; }
+    var duration = 1400;
+    var start = null;
+    function step(ts){
+      if (!start) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = formatARS(target * eased);
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var countEls = document.querySelectorAll('[data-count-to]');
+  if (countEls.length) {
+    if ('IntersectionObserver' in window) {
+      var countIO = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting) {
+            animateCount(entry.target);
+            countIO.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.4 });
+      countEls.forEach(function(el){ countIO.observe(el); });
+    } else {
+      countEls.forEach(function(el){ animateCount(el); });
+    }
   }
 })();
 </script>
