@@ -303,7 +303,13 @@
     letter-spacing:-0.01em;
     font-variant-numeric:tabular-nums;
   }
-  .mock-dash-trend{font-size:11.5px;font-weight:800;color:var(--green);}
+  .mock-dash-currency{
+    font-size:10px;
+    font-weight:800;
+    color:var(--muted);
+    letter-spacing:0.03em;
+  }
+  .mock-dash-trend{font-size:11.5px;font-weight:800;color:var(--green);margin-left:auto;}
   .mock-chart{width:100%;height:44px;margin-top:4px;display:block;}
   .mock-chart-line{
     fill:none;
@@ -730,9 +736,10 @@
               </span>
             </div>
             <div class="mock-dashboard">
-              <span class="mock-dash-label">Ventas de hoy</span>
+              <span class="mock-dash-label">Patrimonio en tiempo real</span>
               <div class="mock-dash-value-row">
-                <span class="mock-dash-value" data-count-to="48320">$0</span>
+                <span class="mock-dash-value" data-count-to="85660">$0</span>
+                <span class="mock-dash-currency">USD</span>
                 <span class="mock-dash-trend">▲ 18%</span>
               </div>
               <svg class="mock-chart" viewBox="0 0 220 60" preserveAspectRatio="none" aria-hidden="true">
