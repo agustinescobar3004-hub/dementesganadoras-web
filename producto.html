@@ -483,15 +483,12 @@
     margin:24px auto 0;
   }
   .badge-pill{
-    display:inline-flex;
+    display:flex;
+    flex-direction:column;
     align-items:center;
-    gap:10px;
-    padding:20px 30px;
+    gap:4px;
+    padding:22px 34px;
     border-radius:999px;
-    font-size:16px;
-    font-weight:700;
-    letter-spacing:-0.01em;
-    line-height:1.35;
     text-align:center;
     max-width:620px;
   }
@@ -500,9 +497,24 @@
     color:#fff;
     box-shadow:0 10px 28px rgb(0 201 122 / 0.35);
   }
+  .badge-pill-title{
+    font-size:17px;
+    font-weight:800;
+    letter-spacing:-0.01em;
+    line-height:1.25;
+  }
+  .badge-pill-sub{
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:-0.005em;
+    line-height:1.35;
+    opacity:0.9;
+  }
   @media (max-width:640px){
     .ai-ticker-item{font-size:12px;}
-    .badge-pill{font-size:13.5px;padding:16px 22px;max-width:none;}
+    .badge-pill{padding:16px 22px;max-width:none;gap:3px;}
+    .badge-pill-title{font-size:14.5px;}
+    .badge-pill-sub{font-size:11.5px;}
   }
 
   /* ── Cómo funciona ──────────────────────────────────────── */
@@ -612,11 +624,15 @@
     text-decoration:line-through;
   }
   .price-value{
-    font-size:3.4rem;
+    font-size:3.6rem;
     font-weight:900;
     letter-spacing:-0.02em;
     color:#00e676;
-    text-shadow:0 0 28px rgb(0 230 118 / 0.45);
+    text-shadow:
+      0 0 8px rgb(0 230 118 / 0.9),
+      0 0 20px rgb(0 230 118 / 0.6),
+      0 0 44px rgb(0 230 118 / 0.5),
+      0 0 80px rgb(0 230 118 / 0.35);
   }
   .price-badge{
     display:inline-block;
@@ -773,7 +789,10 @@
       </div>
 
       <div class="badges-row">
-        <div class="badge-pill badge-green reveal reveal-delay-2">📱 Disponible como App — Dejá la excusa de no usar un sistema porque no tenés computadora</div>
+        <div class="badge-pill badge-green reveal reveal-delay-2">
+          <span class="badge-pill-title">📱 Disponible como App</span>
+          <span class="badge-pill-sub">Dejá la excusa de no usar un sistema porque no tenés computadora</span>
+        </div>
       </div>
     </div>
   </section>
