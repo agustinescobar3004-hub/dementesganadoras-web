@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>¡Gracias por tu compra! | EscalApp</title>
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0f1117;
+    --bg-alt:#13161f;
+    --accent:#00e5ff;
+    --green:#00c97a;
+    --text:#e8eaf6;
+    --muted:#8a90a8;
+    --border:#1e2235;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    min-height:100vh;
+    font-family:'Manrope',system-ui,-apple-system,sans-serif;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 0%, rgb(0 201 122 / 0.14), transparent 65%),
+      var(--bg);
+    color:var(--text);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .card{
+    max-width:460px;
+    width:100%;
+    background:var(--bg-alt);
+    border:1px solid var(--border);
+    border-radius:24px;
+    padding:44px 36px;
+    text-align:center;
+    box-shadow:0 30px 70px -30px rgb(0 201 122 / 0.25);
+  }
+  .icon{
+    width:64px;height:64px;
+    margin:0 auto 20px;
+    border-radius:16px;
+    background:linear-gradient(135deg, var(--accent), var(--green));
+    display:flex;align-items:center;justify-content:center;
+    font-size:30px;
+  }
+  h1{font-size:22px;font-weight:800;letter-spacing:-0.01em;margin-bottom:14px;}
+  p{font-size:14.5px;line-height:1.65;color:var(--muted);font-weight:500;margin-bottom:10px;}
+  .highlight{color:var(--text);font-weight:700;}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    margin-top:22px;
+    padding:14px 30px;
+    border-radius:999px;
+    background:linear-gradient(135deg, var(--accent) 0%, var(--green) 100%);
+    color:#06070b;
+    font-weight:800;
+    font-size:15px;
+    text-decoration:none;
+    letter-spacing:-0.01em;
+    transition:transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease;
+  }
+  .btn:hover{transform:translateY(-2px) scale(1.02);}
+  .back{
+    display:block;
+    margin-top:18px;
+    font-size:13px;
+    color:var(--muted);
+    font-weight:600;
+    text-decoration:none;
+  }
+  .back:hover{color:var(--accent);}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">🎉</div>
+    <h1>¡Listo, tu pago se acreditó!</h1>
+    <p>Te enviamos <span class="highlight">tu código de acceso a EscalApp por email</span>. Puede demorar unos minutos en llegar — revisá también la carpeta de spam.</p>
+    <p>Con ese código creás tu cuenta y ya tenés tu negocio organizado, con IA incluida.</p>
+    <a href="https://escalapp.dementesganadoras.com/registro" class="btn">Crear mi cuenta →</a>
+    <a href="index.html" class="back">Volver al inicio</a>
+  </div>
+</body>
+</html>

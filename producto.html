@@ -734,9 +734,8 @@
         <span class="price-badge">20% OFF — Precio de lanzamiento</span>
       </div>
       <div class="payment-methods">
-        <!-- MERCADOPAGO: reemplazar href="#" por el link de pago de MercadoPago cuando esté listo -->
-        <a href="#" class="btn-buy">
-          💳 Pagar con MercadoPago
+        <a href="#" class="btn-buy" id="btn-mercadopago">
+          <span id="btn-mercadopago-label">💳 Pagar con MercadoPago</span>
         </a>
         <div class="payment-soon" aria-disabled="true" title="Disponible pronto">
           <span class="payment-soon-icon">₿</span>
@@ -745,6 +744,7 @@
         </div>
       </div>
       <span class="btn-buy-note">✅ Pago único · Acceso inmediato a EscalApp</span>
+      <span class="btn-buy-note" id="btn-mercadopago-error" style="color:#ff4d6a;display:none;"></span>
     </div>
   </section>
 
@@ -1006,6 +1006,46 @@
     } else {
       countEls.forEach(function(el){ animateCount(el); });
     }
+  }
+
+  // ── Botón de pago con MercadoPago ───────────────────────────
+  var btnMP = document.getElementById('btn-mercadopago');
+  var btnMPLabel = document.getElementById('btn-mercadopago-label');
+  var btnMPError = document.getElementById('btn-mercadopago-error');
+  var MP_API_URL = 'https://escalapp.dementesganadoras.com/api/mercadopago';
+
+  if (btnMP) {
+    btnMP.addEventListener('click', function(e){
+      e.preventDefault();
+      if (btnMP.getAttribute('aria-disabled') === 'true') return;
+
+      btnMPError.style.display = 'none';
+      btnMP.setAttribute('aria-disabled', 'true');
+      btnMP.style.opacity = '0.7';
+      btnMP.style.pointerEvents = 'none';
+      btnMPLabel.textContent = 'Cargando...';
+
+      fetch(MP_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'crear-preferencia' }),
+      })
+        .then(function(res){ return res.json().then(function(data){ return { ok: res.ok, data: data }; }); })
+        .then(function(result){
+          if (!result.ok || !result.data.init_point) {
+            throw new Error(result.data && result.data.error ? result.data.error : 'No se pudo iniciar el pago.');
+          }
+          window.location.href = result.data.init_point;
+        })
+        .catch(function(err){
+          btnMPError.textContent = '⚠️ ' + (err.message || 'Hubo un problema iniciando el pago. Probá de nuevo en un momento.');
+          btnMPError.style.display = 'inline-block';
+          btnMP.removeAttribute('aria-disabled');
+          btnMP.style.opacity = '';
+          btnMP.style.pointerEvents = '';
+          btnMPLabel.textContent = '💳 Pagar con MercadoPago';
+        });
+    });
   }
 })();
 </script>

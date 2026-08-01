@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tu pago está pendiente | EscalApp</title>
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0f1117;
+    --bg-alt:#13161f;
+    --accent:#00e5ff;
+    --amber:#fbbf24;
+    --text:#e8eaf6;
+    --muted:#8a90a8;
+    --border:#1e2235;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    min-height:100vh;
+    font-family:'Manrope',system-ui,-apple-system,sans-serif;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 0%, rgb(251 191 36 / 0.12), transparent 65%),
+      var(--bg);
+    color:var(--text);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .card{
+    max-width:460px;
+    width:100%;
+    background:var(--bg-alt);
+    border:1px solid var(--border);
+    border-radius:24px;
+    padding:44px 36px;
+    text-align:center;
+    box-shadow:0 30px 70px -30px rgb(251 191 36 / 0.20);
+  }
+  .icon{
+    width:64px;height:64px;
+    margin:0 auto 20px;
+    border-radius:16px;
+    background:linear-gradient(135deg, var(--amber), #f97316);
+    display:flex;align-items:center;justify-content:center;
+    font-size:30px;
+  }
+  h1{font-size:22px;font-weight:800;letter-spacing:-0.01em;margin-bottom:14px;}
+  p{font-size:14.5px;line-height:1.65;color:var(--muted);font-weight:500;margin-bottom:10px;}
+  .highlight{color:var(--text);font-weight:700;}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    margin-top:22px;
+    padding:14px 30px;
+    border-radius:999px;
+    background:linear-gradient(135deg, var(--accent) 0%, var(--amber) 100%);
+    color:#06070b;
+    font-weight:800;
+    font-size:15px;
+    text-decoration:none;
+    letter-spacing:-0.01em;
+    transition:transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease;
+  }
+  .btn:hover{transform:translateY(-2px) scale(1.02);}
+  .back{
+    display:block;
+    margin-top:18px;
+    font-size:13px;
+    color:var(--muted);
+    font-weight:600;
+    text-decoration:none;
+  }
+  .back:hover{color:var(--accent);}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">⏳</div>
+    <h1>Tu pago está pendiente</h1>
+    <p>Algunos medios de pago (como efectivo o transferencia) tardan un poco en confirmarse. <span class="highlight">No hace falta que hagas nada más</span>: en cuanto se acredite, te mandamos tu código de acceso por email automáticamente.</p>
+    <p>Si en un rato no te llegó nada, escribinos a <span class="highlight">mentalidadcomerciante2026@gmail.com</span>.</p>
+    <a href="index.html" class="btn">Volver al inicio →</a>
+  </div>
+</body>
+</html>
