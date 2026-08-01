@@ -150,48 +150,103 @@
     line-height:1.3;
     white-space:nowrap;
   }
-  .btn-buy-wrap{margin-top:32px;display:flex;flex-direction:column;align-items:center;gap:10px;}
+  .btn-buy-wrap{margin-top:40px;display:flex;flex-direction:column;align-items:center;}
+
+  /* ── "Adquirí ahora": el elemento más magnético de la página ── */
   .btn-buy{
     position:relative;
+    overflow:hidden;
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    gap:10px;
-    padding:20px 48px;
+    gap:14px;
+    padding:clamp(19px,4.5vw,26px) clamp(38px,10vw,68px);
     border-radius:999px;
-    background:#00b050;
+    background:linear-gradient(135deg, #00e676 0%, #00b050 55%, #009457 100%);
     color:#fff;
-    font-size:19px;
-    font-weight:800;
-    letter-spacing:-0.01em;
+    font-size:clamp(18px,4.6vw,23px);
+    font-weight:900;
+    letter-spacing:-0.015em;
     border:none;
     cursor:pointer;
-    box-shadow:0 12px 36px rgb(0 176 80 / 0.45);
+    animation:btn-buy-pulse 2.8s ease-in-out infinite;
     transition:transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease;
   }
-  .btn-buy:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 18px 46px rgb(0 176 80 / 0.55);}
-  .btn-buy-caret{display:inline-block;font-size:13px;transition:transform .3s cubic-bezier(.22,1,.36,1);}
+  .btn-buy:hover{transform:translateY(-4px) scale(1.035);}
+  .btn-buy::after{
+    content:"";
+    position:absolute;
+    top:0; left:-60%;
+    width:35%; height:100%;
+    background:linear-gradient(115deg, transparent, rgb(255 255 255 / 0.45), transparent);
+    transform:skewX(-20deg);
+    animation:btn-buy-shine 3.4s ease-in-out infinite;
+    pointer-events:none;
+  }
+  @keyframes btn-buy-pulse{
+    0%,100%{
+      box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.2),
+        0 16px 38px rgb(0 176 80 / 0.45),
+        0 0 26px rgb(0 229 255 / 0.12);
+    }
+    50%{
+      box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.2),
+        0 24px 56px rgb(0 176 80 / 0.65),
+        0 0 60px rgb(0 229 255 / 0.32);
+    }
+  }
+  @keyframes btn-buy-shine{
+    0%{left:-60%;}
+    40%{left:130%;}
+    100%{left:130%;}
+  }
+  .btn-buy-caret{display:inline-block;font-size:15px;transition:transform .3s cubic-bezier(.22,1,.36,1);}
   #btn-adquirir[aria-expanded="true"] .btn-buy-caret{transform:rotate(180deg);}
   .btn-buy-note{font-size:12.5px;color:var(--muted);font-weight:600;letter-spacing:0.01em;}
 
-  /* Panel de métodos de pago: colapsado hasta que se toca "Adquirí ahora" */
+  /* ── Panel de métodos de pago: colapsado hasta tocar "Adquirí ahora" ── */
   .payment-options{
     width:100%;
+    max-width:380px;
     display:flex;
     justify-content:center;
     max-height:0;
     opacity:0;
     overflow:hidden;
     pointer-events:none;
-    transition:max-height .4s cubic-bezier(.22,1,.36,1), opacity .3s ease;
+    transform:translateY(-6px);
+    transition:max-height .45s cubic-bezier(.22,1,.36,1), opacity .35s ease, transform .35s cubic-bezier(.22,1,.36,1), margin-top .45s cubic-bezier(.22,1,.36,1);
   }
   .payment-options.open{
-    max-height:220px;
+    max-height:280px;
     opacity:1;
     pointer-events:auto;
-    margin-top:14px;
+    transform:translateY(0);
+    margin-top:24px;
+  }
+  .payment-options-card{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;
+    background:var(--bg-alt);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:22px;
+    box-shadow:0 24px 60px -24px rgb(0 0 0 / 0.55);
+  }
+  .payment-options-label{
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--muted);
   }
   .payment-methods{
+    width:100%;
     display:flex;
     flex-wrap:wrap;
     gap:14px;
@@ -204,19 +259,21 @@
     align-items:center;
     justify-content:center;
     gap:10px;
-    padding:16px 38px;
-    border-radius:999px;
-    background:#00b050;
+    flex:1 1 auto;
+    padding:18px 32px;
+    border-radius:14px;
+    background:linear-gradient(135deg, #00e676 0%, #00b050 100%);
     color:#fff;
-    font-size:16.5px;
+    font-size:17px;
     font-weight:800;
     letter-spacing:-0.01em;
     border:none;
     cursor:pointer;
-    box-shadow:0 10px 30px rgb(0 176 80 / 0.4);
-    transition:transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease;
+    box-shadow:0 12px 32px rgb(0 176 80 / 0.4), inset 0 1px 0 rgb(255 255 255 / 0.2);
+    transition:transform .2s cubic-bezier(.22,1,.36,1), box-shadow .2s ease;
   }
-  .btn-pay:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 14px 38px rgb(0 176 80 / 0.5);}
+  .btn-pay:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgb(0 176 80 / 0.5), inset 0 1px 0 rgb(255 255 255 / 0.2);}
+  .payment-options-trust{font-size:11.5px;color:var(--muted);font-weight:600;letter-spacing:0.01em;}
   .payment-soon{
     display:flex;
     flex-direction:column;
@@ -233,7 +290,8 @@
   }
   /* Placeholder de USDT: estructura lista, oculta hasta que esté disponible.
      El display:flex de arriba gana sobre el [hidden] del navegador si no se
-     fuerza explícito acá — sacar esta regla el día que se habilite. */
+     fuerza explícito acá — sacar esta regla el día que se habilite (y volver
+     a poner .btn-pay en flex:0 1 auto para que compartan la fila). */
   .payment-soon[hidden]{display:none;}
   .payment-soon-icon{font-size:19px;line-height:1;}
   .payment-soon-label{font-size:15px;font-weight:800;color:var(--text);letter-spacing:-0.01em;}
@@ -688,7 +746,8 @@
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:6px;
+    gap:8px;
+    margin-bottom:36px;
   }
   .price-old{
     font-size:1.3rem;
@@ -709,6 +768,7 @@
   }
   .price-badge{
     display:inline-block;
+    margin-top:2px;
     padding:8px 18px;
     border-radius:999px;
     background:#ff4d6a;
@@ -781,21 +841,23 @@
       </a>
 
       <div class="payment-options" id="payment-options">
-        <div class="payment-methods">
-          <a href="#" class="btn-pay" id="btn-mercadopago">
-            <span id="btn-mercadopago-label">💳 Pagar con MercadoPago</span>
-          </a>
-          <!-- USDT: estructura lista para habilitar, oculta hasta que esté disponible -->
-          <div class="payment-soon" aria-disabled="true" title="Disponible pronto" hidden>
-            <span class="payment-soon-icon">₿</span>
-            <span class="payment-soon-label">Pagar con USDT</span>
-            <span class="payment-soon-tag">Disponible pronto</span>
+        <div class="payment-options-card">
+          <span class="payment-options-label">Elegí tu método de pago</span>
+          <div class="payment-methods">
+            <a href="#" class="btn-pay" id="btn-mercadopago">
+              <span id="btn-mercadopago-label">💳 Pagar con MercadoPago</span>
+            </a>
+            <!-- USDT: estructura lista para habilitar, oculta hasta que esté disponible -->
+            <div class="payment-soon" aria-disabled="true" title="Disponible pronto" hidden>
+              <span class="payment-soon-icon">₿</span>
+              <span class="payment-soon-label">Pagar con USDT</span>
+              <span class="payment-soon-tag">Disponible pronto</span>
+            </div>
           </div>
+          <span class="payment-options-trust">🔒 Pago 100% seguro, procesado por MercadoPago</span>
+          <span class="btn-buy-note" id="btn-mercadopago-error" style="color:#ff4d6a;display:none;"></span>
         </div>
       </div>
-
-      <span class="btn-buy-note">✅ Pago único · Acceso inmediato a EscalApp</span>
-      <span class="btn-buy-note" id="btn-mercadopago-error" style="color:#ff4d6a;display:none;"></span>
     </div>
   </section>
 
