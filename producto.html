@@ -171,6 +171,36 @@
   }
   .btn-buy:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 18px 46px rgb(0 176 80 / 0.55);}
   .btn-buy-note{font-size:12.5px;color:var(--muted);font-weight:600;letter-spacing:0.01em;}
+  .payment-methods{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    justify-content:center;
+    align-items:stretch;
+  }
+  .payment-soon{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    padding:14px 30px;
+    border-radius:999px;
+    border:2px solid var(--border);
+    background:rgb(255 255 255 / 0.02);
+    opacity:0.55;
+    cursor:not-allowed;
+    user-select:none;
+  }
+  .payment-soon-icon{font-size:19px;line-height:1;}
+  .payment-soon-label{font-size:15px;font-weight:800;color:var(--text);letter-spacing:-0.01em;}
+  .payment-soon-tag{
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
 
   /* ── Mockup de EscalApp ─────────────────────────────────── */
   #mockup-showcase{
@@ -703,10 +733,17 @@
         <span class="price-value">$99.000</span>
         <span class="price-badge">20% OFF — Precio de lanzamiento</span>
       </div>
-      <!-- MERCADOPAGO: reemplazar href="#" por el link de pago de MercadoPago cuando esté listo -->
-      <a href="#" class="btn-buy">
-        🛒 Adquirí ahora
-      </a>
+      <div class="payment-methods">
+        <!-- MERCADOPAGO: reemplazar href="#" por el link de pago de MercadoPago cuando esté listo -->
+        <a href="#" class="btn-buy">
+          💳 Pagar con MercadoPago
+        </a>
+        <div class="payment-soon" aria-disabled="true" title="Disponible pronto">
+          <span class="payment-soon-icon">₿</span>
+          <span class="payment-soon-label">Pagar con USDT</span>
+          <span class="payment-soon-tag">Disponible pronto</span>
+        </div>
+      </div>
       <span class="btn-buy-note">✅ Pago único · Acceso inmediato a EscalApp</span>
     </div>
   </section>
@@ -904,7 +941,7 @@
   <section id="cta-final">
     <p class="cta-final-title reveal">¿Listo para escalar tu negocio?</p>
     <p class="cta-final-sub reveal reveal-delay-1">Adquirí EscalApp hoy con 20% OFF y empezá a crecer desde el día 1.</p>
-    <a href="#" class="btn btn-primary reveal reveal-delay-2">Adquirí ahora — $99.000</a>
+    <a href="#comprar" class="btn btn-primary reveal reveal-delay-2">Adquirí ahora — $99.000</a>
   </section>
 
   <footer>
